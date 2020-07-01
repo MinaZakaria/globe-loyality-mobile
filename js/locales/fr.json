@@ -1,0 +1,9 @@
+{
+  "login": {
+    "title": "FR-Log in",
+    "loginButton": "FR-Login",
+    "emailPlaceholder": "FR-Email",
+    "passwordPlaceholder": "FR-Password",
+    "createAccount": "FR-or create an account"
+  }
+}

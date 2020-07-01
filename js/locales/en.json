@@ -1,0 +1,9 @@
+{
+  "login": {
+    "title": "Log in",
+    "loginButton": "Login",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "createAccount": "or create an account"
+  }
+}
