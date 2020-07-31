@@ -1,4 +1,4 @@
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export const save = async (key, value) => {
   const storedValue = typeof value === 'string' ? value : JSON.stringify(value);

@@ -1,9 +1,25 @@
 {
   "login": {
-    "title": "FR-Log in",
-    "loginButton": "FR-Login",
-    "emailPlaceholder": "FR-Email",
-    "passwordPlaceholder": "FR-Password",
-    "createAccount": "FR-or create an account"
+    "title": "Log in",
+    "loginButton": "Login",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "createAccount": "or create an account"
+  },
+  "common": {
+    "errors": {
+      "UN_AUTHENTICATED": "Wrong username or password",
+      "INPUT_VALIDATION": "Validation failed!",
+      "NOT_CONNECTED": "Seems like you don’t have internet connection",
+      "UN_KNOWN": "Something went wrong",
+      "UN_AUTHORIZED": "You are not authorized to take this action",
+      "SERVICE_DOWN": "Service is down",
+      "SERVER_ERROR": "Server error",
+      "ROUTE_NOT_FOUND": "Resource not found",
+      "TOKEN_EXPIRED": "The store token has expired",
+      "TOKEN_INVALID": "Token invalid",
+      "TIMEOUT": "Connection timed out",
+      "ITEM_NOT_ACTIVE": "$t(common:{{entity}}) is deactivated"
+    }
   }
 }

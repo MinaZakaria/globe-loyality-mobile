@@ -1,0 +1,22 @@
+export const UN_KNOWN = 'UN_KNOWN';
+export const UN_AUTHENTICATED = 'UN_AUTHENTICATED';
+export const UNAUTHENTICATED = 'UNAUTHENTICATED';
+export const UN_AUTHORIZED = 'UN_AUTHORIZED';
+export const TOKEN_EXPIRED = 'TOKEN_EXPIRED';
+export const TOKEN_INVALID = 'TOKEN_INVALID';
+export const NOT_FOUND = 'NOT_FOUND';
+export const SERVICE_DOWN = 'SERVICE_DOWN';
+export const SERVER_ERROR = 'SERVER_ERROR';
+export const INPUT_VALIDATION = 'INPUT_VALIDATION';
+export const INVALID_DATA = 'INVALID_DATA';
+export const TIMEOUT = 'TIMEOUT';
+
+export default {
+  UN_KNOWN,
+  UN_AUTHENTICATED,
+  UN_AUTHORIZED,
+  NOT_FOUND,
+  TOKEN_EXPIRED,
+  SERVICE_DOWN,
+  TIMEOUT,
+};

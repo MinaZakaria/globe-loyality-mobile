@@ -1,7 +1,7 @@
-import AuthAdapter from './adapters/AuthAdapter';
+import UserAdapter from './adapters/UserAdapter';
 
-export default (getToken, driver) => {
+export default (getAccessToken, driver) => {
   return {
-    auth: new AuthAdapter(getToken, driver),
+    user: new UserAdapter(getAccessToken, driver),
   };
 };

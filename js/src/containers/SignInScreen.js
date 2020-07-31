@@ -1,22 +1,20 @@
 import { connect } from 'react-redux';
 import SignIn from '../components/SignIn';
-import { loginApi } from '../actions/login';
+import { login } from '../actions/login';
+
+import { actionWithPromise } from '../middlewares/promises';
 
 const mapStateToProps = state => {  //eslint-disable-line no-unused-vars
   return {
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    onSubmitClicked: (email, password) => {
-      const loginApiAction = loginApi(email, password);
-      dispatch(loginApiAction);
-      return loginApiAction.promise;
+    onLoginPress: (email, password) => {
+      const loginAction = login(email, password);
+      return dispatch(actionWithPromise(loginAction));
     },
-    onCreateAccountClicked: () => {
-      ownProps.navigation.navigate('SignUp');
-    }
   };
 };
 

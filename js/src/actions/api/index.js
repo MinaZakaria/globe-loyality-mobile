@@ -10,9 +10,17 @@ export const FAILURE = 'FAILURE';
  * Request Names
  * Must be secure object keys
  */
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
+export const SIGN_UP = 'SIGN_UP';
 export const LOGIN_API = 'LOGIN_API';
+export const LOGOUT_API = 'LOGOUT_API';
+export const EXPIRE_TOKEN = 'EXPIRE_TOKEN';
+export const SAVE_TO_LOCAL_STORAGE = 'SAVE_TO_LOCAL_STORAGE';
+export const LOAD_FROM_LOCAL_STORAGE = 'LOAD_FROM_LOCAL_STORAGE';
+export const REMOVE_FROM_LOCAL_STORAGE = 'REMOVE_FROM_LOCAL_STORAGE';
 
-export const getAction = (requestName, requestState) => {
+export const getActionType = (requestName, requestState) => {
   return `${requestName}_${requestState}`;
 };
 

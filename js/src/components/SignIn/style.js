@@ -1,61 +1,28 @@
 import { StyleSheet } from 'react-native';
-import { colors, spacings, fonts } from '../../styles';
+import { fonts, colors, spacings } from '../../styles';
 
 export default StyleSheet.create({
-  keyBoard: {
-    flex: 1
-  },
-  container: {
+  mainContainer: {
     flex: 1,
-    paddingTop: 100,
-    paddingHorizontal: 24,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    backgroundColor: '#F1F9FF'
-  },
-  inputContainer: {
-    paddingHorizontal: 24,
-    alignItems: 'center',
-    backgroundColor: 'white',
-    borderRadius: 10,
-  },
-  textContainer: {
-    paddingVertical: 15,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white'
+    flexDirection: 'column',
+    backgroundColor: colors.background
   },
-  textInput: {
-    paddingVertical: 15,
-    width: 279,
-    height: 50,
-    borderWidth: 1,
-    borderRadius: 10,
-    borderColor: '#D5D5D5',
-    textAlign: 'center',
-    color: colors.primary,
-    marginBottom: spacings.lg,
-  },
-  loginText: {
-    ...fonts.title,
-    color: '#2699FB'
-  },
-  button: {
-    width: 279,
-    height: 50,
-    borderRadius: 10,
-    backgroundColor: '#2699FB',
-    margin: spacings.lg,
-    marginBottom: spacings.xs,
-    justifyContent: 'center',
+  innerContainer: {
+    flex: 0.8,
+    width: 300,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
     alignItems: 'center',
+    borderRadius: 29,
+    padding: spacings.xxl,
+    backgroundColor: colors.surface
   },
-  buttonText: {
-    ...fonts.smallTitle,
-    color: '#ffffff'
-  },
-  error: {
-    ...fonts.smallTitle,
-    color: colors.error
+  title: {
+    ...fonts.headline,
+    marginTop: spacings.xl,
+    marginBottom: spacings.xl,
+    color: colors.primary
   }
 });

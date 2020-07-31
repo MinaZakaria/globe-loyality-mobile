@@ -29,7 +29,7 @@ const startupReadyPromise = () => new Promise((resolve) => { store.dispatch(star
  * rootReadyPromise should be used to hide splash screen
  */
 Promise.all([
-  rootReadyPromise
+  appConfig.enableStorybook ? null : rootReadyPromise
 ]).then(
   () => startupReadyPromise()
 ).then(() => {
