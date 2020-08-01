@@ -9,7 +9,8 @@ import {
   signUpSuccess,
   signUpFailure
 } from '../../actions/signUp';
-import { saveToLocalStorage } from '../../actions/storage';
+import { showRibbon } from '../../actions/ribbon';
+import { goBack } from '../../actions/navigate';
 
 export default function* watcher() {
   yield takeEvery(SIGN_UP_REQUEST, worker);
@@ -26,8 +27,13 @@ function* worker(action) {
     return;
   }
 
-  const accessToken = signUpApiResultAction.payload.accessToken;
+  yield put(goBack());
 
-  yield put(saveToLocalStorage('accessToken', accessToken));
+  yield put(showRibbon({
+    type: 'info',
+    message: 'Verify you mail please',
+    dismissable: true,
+  }));
+
   yield put(signUpSuccess());
 }

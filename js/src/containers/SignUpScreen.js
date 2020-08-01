@@ -7,13 +7,12 @@ import { actionWithPromise } from '../middlewares/promises';
 const mapStateToProps = state => {  //eslint-disable-line no-unused-vars
   return {
     userRoles: [
-      { id: 1, name: 'Banana' },
-      { id: 2, name: 'Mango' },
-      { id: 3, name: 'Pear' },
-      { id: 4, name: 'koko' },
-      { id: 5, name: 'nono' },
-      { id: 6, name: 'Pear' },
-      { id: 7, name: 'zatoon' }
+      { id: 1, name: 'Medical representative' },
+      { id: 2, name: 'First line manager' },
+      { id: 3, name: 'Second line manager' },
+      { id: 4, name: 'HR' },
+      { id: 5, name: 'Top management' },
+      { id: 6, name: 'Trainer' },
     ]
   };
 };

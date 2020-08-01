@@ -4,7 +4,12 @@
     "button": "Login",
     "emailPlaceholder": "Email",
     "passwordPlaceholder": "Password",
-    "createAccount": "or create an account"
+    "createAccount": "or create an account",
+    "errors": {
+      "UN_AUTHENTICATED": "Wrong email or password",
+      "ITEM_IS_PENDING": "You are waiting admin approval",
+      "EMAIL_NOT_VERIFIED": "You Should Verify your email first",
+    }
   },
   "signup": {
     "title": "Sign Up",
@@ -20,7 +25,6 @@
   },
   "common": {
     "errors": {
-      "UN_AUTHENTICATED": "Wrong email or password",
       "INPUT_VALIDATION": "Validation failed!",
       "NOT_CONNECTED": "Seems like you don’t have internet connection",
       "UN_KNOWN": "Something went wrong",

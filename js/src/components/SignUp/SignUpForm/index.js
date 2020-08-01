@@ -21,7 +21,7 @@ function SignUpForm(props) {
     [error, setError] = useState(null),
     { t } = props;
 
-  const onChangeName = name => setName(name.replace(/\s/g, ''));
+  const onChangeName = name => setName(name);
   const onChangeEmail = email => setEmail(email.replace(/\s/g, ''));
   const onChangePassword = (password) => setPassword(password);
   const onChangePasswordConfirmation = (passwordConfirmation) => setPasswordConfirmation(passwordConfirmation);
