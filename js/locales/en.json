@@ -20,6 +20,9 @@
     "passwordConfirmationPlaceholder": "Password Confirmation",
     "rolesPlaceholder": "Role"
   },
+  "challenges": {
+    "title": "Challenges"
+  },
   "header": {
     "backButton": "Back"
   },

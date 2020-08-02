@@ -16,8 +16,8 @@ export function fromAPI(apiEmployee) {
       statusId: apiEmployee.status_id,
       roleId: apiEmployee.role_id,
       emailVerifiedAt: apiEmployee.email_verified_at,
-      createdAt: apiEmployee.createdAt,
-      updatedAt: apiEmployee.updatedAt,
+      createdAt: apiEmployee.created_at,
+      updatedAt: apiEmployee.updated_at,
     }),
   };
 }
