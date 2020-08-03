@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { withTranslation } from 'react-i18next';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './style';
+import images from '../../../assets/images';
 
 import ChallengeCard from './ChallengeCard';
 
@@ -29,7 +30,15 @@ function Challenges({ t, navigation, challenges, fetchChallenges, onChallengePre
 
   return (
     <View style={styles.container}>
-      <Text style={styles.containerTitle}>{t('title')}</Text>
+      <View style={styles.header}>
+        <TouchableOpacity
+          style={styles.menuButton}
+          onPress={() => navigation.openDrawer()}
+        >
+          <Image source={images.menu} />
+        </TouchableOpacity>
+        <Text style={styles.containerTitle}>{t('title')}</Text>
+      </View>
       <FlatList
         data={challenges}
         renderItem={renderChallenge}

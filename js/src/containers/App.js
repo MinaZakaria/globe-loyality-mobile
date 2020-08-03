@@ -1,15 +1,17 @@
 import React from 'react';
+import { Image } from 'react-native';
+
 import { connect } from 'react-redux';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator, DrawerItem, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
+import images from '../../assets/images';
 
 import { getAccessToken } from '../selectors/login';
 
 import { logout } from '../actions/logout';
 
-import HomeScreen from './HomeScreen';
 import ProfileScreen from './ProfileScreen';
-// import SettingsScreen from './SettingsScreen';
+import SettingsScreen from './SettingsScreen';
 import ChallengesScreen from './ChallengesScreen';
 import SignInScreen from './SignInScreen';
 import SignUpScreen from './SignUpScreen';
@@ -76,10 +78,30 @@ function AppNavigator(props) {
 function HomeDrawer() {
   return (
     <Drawer.Navigator initialRouteName="Challenges" drawerContent={props => <CustomDrawerContentScreen {...props} />}>
-      <Drawer.Screen name="Home" component={HomeScreen} />
-      <Drawer.Screen name="Challenges" component={ChallengesScreen} />
-      <Drawer.Screen name="Profile" component={ProfileScreen} />
-      {/* <Drawer.Screen name="Setings" component={SettingsScreen} /> */}
+      <Drawer.Screen
+        name="Challenges"
+        component={ChallengesScreen}
+        options={{
+          drawerLabel: 'Challenges',
+          drawerIcon: () => (<Image source={images.challenges.icon} />)  //eslint-disable-line
+        }}
+      />
+      <Drawer.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          drawerLabel: 'Profile',
+          drawerIcon: () => (<Image source={images.profile} />)  //eslint-disable-line
+        }}
+      />
+      <Drawer.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{
+          drawerLabel: 'Settings',
+          drawerIcon: () => (<Image source={images.settings} />)  //eslint-disable-line
+        }}
+      />
     </Drawer.Navigator>
   );
 }
@@ -90,7 +112,8 @@ function CustomDrawerContent({ ...props }) {
       <DrawerItemList {...props} />
       <DrawerItem
         label="Logout"
-        onPress={props.onLogoutPress}
+        icon={() => <Image source={images.logout} />}
+        onPress={props.onLogoutPress} //eslint-disable-line
       />
     </DrawerContentScrollView>
   );

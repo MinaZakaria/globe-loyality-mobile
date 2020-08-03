@@ -8,4 +8,12 @@ export default {
     back: require('./arrows/back.png'),
     back2: require('./arrows/back2.png')
   },
+  settings: require('./settings/settings.png'),
+  challenges: {
+    icon: require('./challenges/icon.png'),
+    default: require('./challenges/default.png'),
+  },
+  logout: require('./logout/logout.png'),
+  menu: require('./menu/menu.png'),
+  profile: require('./profile/profile.png'),
 };

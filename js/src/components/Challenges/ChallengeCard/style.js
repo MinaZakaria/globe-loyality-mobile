@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import { fonts, colors, spacings } from '../../../styles';
 
 export default StyleSheet.create({
-  store: {
+  challenge: {
     shadowColor: colors.inkPrimary,
     shadowOffset: {
       width: 0,
@@ -16,11 +16,11 @@ export default StyleSheet.create({
     margin: spacings.sm,
     padding: spacings.sm
   },
-  storeName: {
+  challengeName: {
     ...fonts.headline,
     paddingBottom: spacings.xxs
   },
-  storeLocation: {
+  challengeDescription: {
     ...fonts.medium,
     paddingBottom: spacings.xs,
     color: colors.inkSub

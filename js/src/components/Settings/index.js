@@ -3,21 +3,21 @@ import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './style';
 
-class Home extends Component {
+class Settings extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Home Screen</Text>
+        <Text>Settings Screen</Text>
       </View>
     );
   }
 }
 
-Home.propTypes = {
+Settings.propTypes = {
   onLogoutPress: PropTypes.func
 };
 
-Home.defaultProps = {
+Settings.defaultProps = {
 };
 
-export default Home;
+export default Settings;

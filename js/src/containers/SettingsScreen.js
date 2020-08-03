@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Home from '../components/Home';
+import Settings from '../components/Settings';
 
 const mapStateToProps = state => {  //eslint-disable-line no-unused-vars
   return {
@@ -11,9 +11,9 @@ const mapDispatchToProps = dispatch => {  //eslint-disable-line no-unused-vars
   };
 };
 
-const HomeScreen = connect(
+const SettingsScreen = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home);
+)(Settings);
 
-export default HomeScreen;
+export default SettingsScreen;
