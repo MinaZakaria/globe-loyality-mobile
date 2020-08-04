@@ -21,7 +21,13 @@
     "rolesPlaceholder": "Role"
   },
   "challenges": {
-    "title": "Challenges"
+    "title": "Challenges",
+    "create": {
+      "namePlaceholder": "Challenge name",
+      "descriptionPlaceholder": "Create a new Challenge",
+      "programsPlaceholder": "Program",
+      "button": "Create"
+    }
   },
   "header": {
     "backButton": "Back"

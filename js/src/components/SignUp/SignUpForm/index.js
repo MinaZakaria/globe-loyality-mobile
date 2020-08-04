@@ -42,7 +42,7 @@ function SignUpForm(props) {
   const getError = () => {
     return error && (
       <Text style={styles.errorText}>
-        {t([`store.errors.${error.type}`, `common:errors.${error.type}`], error.details)}
+        {t([`errors.${error.type}`, `common:errors.${error.type}`], error.details)}
       </Text>
     );
   };

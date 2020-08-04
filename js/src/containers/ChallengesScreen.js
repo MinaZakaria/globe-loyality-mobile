@@ -15,7 +15,8 @@ const mapDispatchToProps = dispatch => {
     fetchChallenges: () => {
       dispatch(listChallenges());
     },
-    onChallengePress: id => console.log('Challenge Pressed', id)  //eslint-disable-line no-console
+    onChallengePress: id => console.log('Challenge Pressed', id),  //eslint-disable-line no-console
+    onCreateChallengePress: id => console.log('Challenge Pressed', id)  //eslint-disable-line no-console
   };
 };
 

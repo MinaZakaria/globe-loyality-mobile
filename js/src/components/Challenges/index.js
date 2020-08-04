@@ -6,6 +6,7 @@ import styles from './style';
 import images from '../../../assets/images';
 
 import ChallengeCard from './ChallengeCard';
+import CreateChallenge from './CreateChallenge';
 
 function Challenges({ t, navigation, challenges, fetchChallenges, onChallengePress }) {
   useEffect(() => {
@@ -16,13 +17,27 @@ function Challenges({ t, navigation, challenges, fetchChallenges, onChallengePre
 
   }, [navigation]);
 
+  const programs = [
+    { id: 1, name: '3abkarino' },
+    { id: 2, name: 'Globe Champion' },
+    { id: 3, name: 'Globe Idol' },
+    { id: 4, name: 'Selm El-Magd' },
+    { id: 5, name: 'El-Da7ee7' },
+    { id: 6, name: 'Talent Catching' },
+    { id: 7, name: 'Globe Olympics' },
+    { id: 8, name: 'General' },
+  ];
+
   const renderChallenge = ({ item }) => {
-    return <ChallengeCard challenge={item} onChallengePress={onPress} t={t} />;
+    return <ChallengeCard challenge={item} onChallengePress={onPress} />;
   };
 
   const onPress = id => onChallengePress(id);
+  const onCreateChallengePress = id => onCreateChallengePress(id);
 
   const challengesKeyExtractor = item => item.id.toString();
+
+  const renderCreateChallenge = () => <CreateChallenge onCreatePress={onCreateChallengePress} programs={programs} />;
 
   renderChallenge.propTypes = {
     item: PropTypes.object
@@ -40,6 +55,7 @@ function Challenges({ t, navigation, challenges, fetchChallenges, onChallengePre
         <Text style={styles.containerTitle}>{t('title')}</Text>
       </View>
       <FlatList
+        ListHeaderComponent={renderCreateChallenge}
         data={challenges}
         renderItem={renderChallenge}
         keyExtractor={challengesKeyExtractor}

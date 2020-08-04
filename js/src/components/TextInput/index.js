@@ -23,7 +23,7 @@ class TextInput extends Component {
         activeLineWidth={1}
         disabledLineType='solid'
         errorColor={colors.error}
-        inputContainerStyle={this.getContainerStyle()}
+        inputContainerStyle={[this.getContainerStyle(), this.props.containerStyle]}
         lineWidth={1}
         baseColor={this.props.disabled ? colors.disabled : colors.primarySub}
         disabledLineWidth={0}
@@ -83,7 +83,8 @@ TextInput.propTypes = {
   error: PropTypes.string,
   onChangeText: PropTypes.func,
   editable: PropTypes.bool,
-  labelTextStyle: PropTypes.object
+  labelTextStyle: PropTypes.object,
+  containerStyle: PropTypes.object
 };
 
 export default TextInput;
