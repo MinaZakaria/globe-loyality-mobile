@@ -17,4 +17,16 @@ export default class ChallengeApi {
       }
     );
   }
+
+  create(challenge) {
+    return this.driver.post(
+      `${this.prefix}`,
+      {
+        ...challenge
+      },
+      {
+        Authorization: `Bearer ${this.getAccessToken()}`
+      }
+    );
+  }
 }

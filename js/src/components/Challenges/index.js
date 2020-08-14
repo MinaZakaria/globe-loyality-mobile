@@ -6,9 +6,10 @@ import styles from './style';
 import images from '../../../assets/images';
 
 import ChallengeCard from './ChallengeCard';
-import CreateChallenge from './CreateChallenge';
 
-function Challenges({ t, navigation, challenges, fetchChallenges, onChallengePress }) {
+import ChallengeFormModal from './ChallengeFormModal';
+
+function Challenges({ t, navigation, challenges, fetchChallenges, onChallengePress, onCreateChallengePress }) {
   useEffect(() => {
     const fetch = navigation.addListener('focus', () => {
       fetchChallenges();
@@ -33,11 +34,64 @@ function Challenges({ t, navigation, challenges, fetchChallenges, onChallengePre
   };
 
   const onPress = id => onChallengePress(id);
-  const onCreateChallengePress = id => onCreateChallengePress(id);
+  const onCreatePress = (challenge) => onCreateChallengePress(challenge);
 
   const challengesKeyExtractor = item => item.id.toString();
 
-  const renderCreateChallenge = () => <CreateChallenge onCreatePress={onCreateChallengePress} programs={programs} />;
+  const modalTrigger = ({ show, hide }) => {
+    this.modalControls = {
+      show, hide
+    };
+  };
+
+  const showModal = () => {
+    this.modalControls.show();
+  };
+
+  // const hideModal = () => {
+  //   this.modalControls.hide();
+  // };
+
+  const renderCreateButton = () => {
+    return (
+      <TouchableOpacity
+        style={styles.createButton}
+        onPress={showModal}
+      >
+        <Image source={images.challenges.icon} />
+        <Text>   Create a new Challenge...</Text>
+      </TouchableOpacity>
+    );
+  };
+
+  const renderChallengeModal = () => {
+    return (
+      <ChallengeFormModal
+        trigger={modalTrigger}
+        onDone={onCreatePress}
+        programs={programs}
+      />
+    );
+  };
+
+
+  const renderHeader = () => {
+    return (
+      <View style={styles.header}>
+        <TouchableOpacity
+          onPress={() => navigation.openDrawer()}
+        >
+          <Image source={images.menu} />
+        </TouchableOpacity>
+        <Text style={styles.containerTitle}>{t('title')}</Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Profile')}
+        >
+          <Image source={images.profile} />
+        </TouchableOpacity>
+      </View>
+    );
+  };
 
   renderChallenge.propTypes = {
     item: PropTypes.object
@@ -45,21 +99,14 @@ function Challenges({ t, navigation, challenges, fetchChallenges, onChallengePre
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity
-          style={styles.menuButton}
-          onPress={() => navigation.openDrawer()}
-        >
-          <Image source={images.menu} />
-        </TouchableOpacity>
-        <Text style={styles.containerTitle}>{t('title')}</Text>
-      </View>
+      {renderHeader()}
       <FlatList
-        ListHeaderComponent={renderCreateChallenge}
+        ListHeaderComponent={renderCreateButton}
         data={challenges}
         renderItem={renderChallenge}
         keyExtractor={challengesKeyExtractor}
       />
+      {renderChallengeModal()}
     </View>
   );
 }
@@ -69,7 +116,8 @@ Challenges.propTypes = {
   navigation: PropTypes.object,
   fetchChallenges: PropTypes.func.isRequired,
   challenges: PropTypes.array,
-  onChallengePress: PropTypes.func
+  onChallengePress: PropTypes.func,
+  onCreateChallengePress: PropTypes.func,
 };
 
 Challenges.defaultProps = {

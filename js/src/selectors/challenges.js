@@ -22,5 +22,5 @@ export const getAll = (state) => {
 export const getAllActive = (state) => {
   return getAll(state).filter(challenge => {
     return challenge.isActive;
-  });
+  }).sort((o1, o2) => o2.id - o1.id);
 };

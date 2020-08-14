@@ -41,7 +41,16 @@ export function fromAPIList(apiChallenges) {
   return result;
 }
 
+export function toAPI(challenge) {
+  return removeUndefinedKeys({
+    name: challenge.name,
+    description: challenge.description,
+    program_id: challenge.programId,
+  });
+}
+
 export default {
+  toAPI,
   fromAPI,
   fromAPIList
 };

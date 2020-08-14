@@ -10,16 +10,27 @@ export default StyleSheet.create({
     ...fonts.title,
     paddingTop: spacings.xl,
     paddingBottom: spacings.lg,
-    alignSelf: 'center'
   },
   header: {
     marginHorizontal: 15,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start'
+    justifyContent: 'space-between',
   },
-  menuButton: {
-    paddingTop: spacings.xxs,
-    flex: 0.5,
-  }
+  createButton: {
+    flexDirection: 'row',
+    shadowColor: colors.inkPrimary,
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.32,
+    shadowRadius: 5.46,
+    elevation: 9,
+    backgroundColor: colors.surface,
+    borderRadius: 5,
+    margin: spacings.sm,
+    padding: spacings.sm,
+    height: 100
+  },
 });

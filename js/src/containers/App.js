@@ -1,21 +1,23 @@
 import React from 'react';
 import { Image } from 'react-native';
-
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator, DrawerItem, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
+
 import images from '../../assets/images';
 
 import { getAccessToken } from '../selectors/login';
 
 import { logout } from '../actions/logout';
 
-import ProfileScreen from './ProfileScreen';
-import SettingsScreen from './SettingsScreen';
-import ChallengesScreen from './ChallengesScreen';
 import SignInScreen from './SignInScreen';
 import SignUpScreen from './SignUpScreen';
-import PropTypes from 'prop-types';
+import ProfileScreen from './ProfileScreen';
+import SettingsScreen from './SettingsScreen';
+import ProgramsScreen from './ProgramsScreen';
+import ChallengesScreen from './ChallengesScreen';
+
 import RibbonWrapper from '../components/RibbonWrapper';
 import RibbonService from '../utils/RibbonService';
 
@@ -99,6 +101,14 @@ function HomeDrawer() {
         component={SettingsScreen}
         options={{
           drawerLabel: 'Settings',
+          drawerIcon: () => (<Image source={images.settings} />)  //eslint-disable-line
+        }}
+      />
+      <Drawer.Screen
+        name="Programs"
+        component={ProgramsScreen}
+        options={{
+          drawerLabel: 'Programs',
           drawerIcon: () => (<Image source={images.settings} />)  //eslint-disable-line
         }}
       />

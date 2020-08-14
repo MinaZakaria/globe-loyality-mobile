@@ -1,5 +1,10 @@
 import ChallengeApi from '../apis/Challenge';
-import { listChallengesSuccess, listChallengesFailure } from '../../actions/challenges';
+import {
+  listChallengesSuccess,
+  listChallengesFailure,
+  createChallengeSuccess,
+  createChallengeFailure
+} from '../../actions/challenges';
 import ChallengeMapper from '../mappers/ChallengeMapper';
 import ErrorMapper from '../mappers/ErrorMapper';
 import HTTPCodeException from '../handlers/HTTPCodeException';
@@ -25,6 +30,24 @@ export default class ChallengeAdapter {
           }
         })
         .catch(handleFailure(resolve, listChallengesFailure));
+    });
+  }
+
+  create(challengeData) {
+    return new Promise((resolve) => {
+      this.challengeApi.create(ChallengeMapper.toAPI(challengeData))
+        .then(([status, body]) => {
+          switch (status) {
+            case 200: {
+              const { challenge } = ChallengeMapper.fromAPI(body.data);
+              resolve(createChallengeSuccess(challenge));
+              return;
+            }
+            default:
+              throw new HTTPCodeException({ status, body: ErrorMapper.fromAPI(body) });
+          }
+        })
+        .catch(handleFailure(resolve, createChallengeFailure));
     });
   }
 }
