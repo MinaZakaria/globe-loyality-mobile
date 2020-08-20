@@ -16,8 +16,10 @@ export default {
   logout: require('./logout/logout.png'),
   menu: require('./menu/menu.png'),
   profile: require('./profile/profile.png'),
+  profile2: require('./profile/profile2.png'),
   close: require('./close/x.png'),
   programs: {
+    logo: require('./programs/programs.png'),
     abkarinoLogo: require('./programs/abkarino/logo.png'),
     globeChampionLogo: require('./programs/globeChampion/logo.png'),
     globeIdolLogo: require('./programs/globeIdol/logo.png'),

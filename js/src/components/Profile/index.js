@@ -26,10 +26,18 @@ class Profile extends Component {
   };
 
   render() {
+    const { currentUser } = this.props;
+    console.log(currentUser);
     return (
       <View style={styles.container}>
         {this.renderHeader()}
-        <Text style={{ alignSelf: 'center', marginTop: 100 }}>Profile Screen</Text>
+        <View style={styles.mainInfo}>
+          <Image source={images.profile2} />
+          <View style={styles.mainText}>
+            <Text>{currentUser.name}</Text>
+            <Text>{currentUser.role.name}</Text>
+          </View>
+        </View>
       </View>
     );
   }
@@ -37,6 +45,7 @@ class Profile extends Component {
 
 Profile.propTypes = {
   navigation: PropTypes.object,
+  currentUser: PropTypes.object,
 };
 
 Profile.defaultProps = {

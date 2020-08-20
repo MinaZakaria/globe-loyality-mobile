@@ -18,4 +18,13 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  mainInfo: {
+    marginTop: 20,
+    flexDirection: 'row',
+    marginLeft: 40
+  },
+  mainText: {
+    marginLeft: 15,
+    marginTop: 10
+  },
 });

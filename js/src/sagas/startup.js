@@ -8,6 +8,7 @@ import {
   LOAD_FROM_LOCAL_STORAGE_FAILURE,
   LOAD_FROM_LOCAL_STORAGE_SUCCESS
 } from '../actions/storage';
+import { listUserRolesApi } from '../actions/userRoles';
 
 export default function* watcher() {
   yield takeEvery(STARTUP, worker);
@@ -15,6 +16,8 @@ export default function* watcher() {
 
 function* worker(action) {
   const { payload } = action;
+
+  yield put(listUserRolesApi());
 
   yield put(loadFromLocalStorage('accessToken'));
 

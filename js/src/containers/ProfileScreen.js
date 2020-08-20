@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
 import Profile from '../components/Profile';
+import { getCurrentUser } from '../selectors/login';
 
-const mapStateToProps = state => {  //eslint-disable-line no-unused-vars
+const mapStateToProps = state => {
   return {
+    currentUser: getCurrentUser(state)
   };
 };
 

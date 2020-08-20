@@ -23,7 +23,6 @@ export const LOGOUT_API_FAILURE = getActionType(LOGOUT_API, FAILURE);
  * action creators
  */
 export function logout() {
-  console.log('action logout');
   return {
     type: LOGOUT_REQUEST,
   };

@@ -109,7 +109,7 @@ function HomeDrawer() {
         component={ProgramsScreen}
         options={{
           drawerLabel: 'Programs',
-          drawerIcon: () => (<Image source={images.settings} />)  //eslint-disable-line
+          drawerIcon: () => (<Image source={images.programs.logo} />)  //eslint-disable-line
         }}
       />
     </Drawer.Navigator>
