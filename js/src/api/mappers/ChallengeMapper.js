@@ -46,6 +46,9 @@ export function toAPI(challenge) {
     name: challenge.name,
     description: challenge.description,
     program_id: challenge.programId,
+    first_prize: challenge.firstPrize,
+    second_prize: challenge.secondPrize,
+    third_prize: challenge.thirdPrize,
   });
 }
 

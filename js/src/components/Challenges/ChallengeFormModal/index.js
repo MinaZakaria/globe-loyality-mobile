@@ -1,6 +1,6 @@
 /* eslint-disable security/detect-object-injection */
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { withTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
@@ -37,7 +37,10 @@ class ChallengeFormModal extends Component {
         id: challenge.id,
         name: challenge.name,
         description: challenge.description,
-        programId: challenge.programId
+        programId: challenge.programId,
+        firstPrize: challenge.firstPrize,
+        secondPrize: challenge.secondPrize,
+        thirdPrize: challenge.thirdPrize,
       }
     };
   }
@@ -56,7 +59,7 @@ class ChallengeFormModal extends Component {
           title='Add new Challenge'
           size='large'
         >
-          <View>
+          <ScrollView>
             <Dropdown
               data={programs}
               label={t('create.programsPlaceholder')}
@@ -75,6 +78,39 @@ class ChallengeFormModal extends Component {
               error={this.getFieldError('name')}
             />
             <TextInput
+              keyboardType='numeric'
+              containerStyle={styles.nameContainerStyle}
+              autoCorrect={false}
+              label={t('create.firstPrize')}
+              onChangeText={this.onChangeFirstPrize}
+              autoCapitalize='none'
+              maxLength={25}
+              defaultValue={this.state.challenge.firstPrize}
+              error={this.getFieldError('firstPrize')}
+            />
+            <TextInput
+              keyboardType='numeric'
+              containerStyle={styles.nameContainerStyle}
+              autoCorrect={false}
+              label={t('create.secondPrize')}
+              onChangeText={this.onChangeSecondPrize}
+              autoCapitalize='none'
+              maxLength={25}
+              defaultValue={this.state.challenge.secondPrize}
+              error={this.getFieldError('secondPrize')}
+            />
+            <TextInput
+              keyboardType='numeric'
+              containerStyle={styles.nameContainerStyle}
+              autoCorrect={false}
+              label={t('create.thirdPrize')}
+              onChangeText={this.onChangeThirdPrize}
+              autoCapitalize='none'
+              maxLength={25}
+              defaultValue={this.state.challenge.thirdPrize}
+              error={this.getFieldError('thirdPrize')}
+            />
+            <TextInput
               containerStyle={styles.descriptionContainerStyle}
               autoCorrect={false}
               label={t('create.descriptionPlaceholder')}
@@ -85,13 +121,16 @@ class ChallengeFormModal extends Component {
               defaultValue={this.state.challenge.description}
               error={this.getFieldError('description')}
             />
-          </View>
+          </ScrollView>
         </Popup>
       </OverlayModal>
     );
   }
 
   onChangeName = name => this.setState({ challenge: { ...this.state.challenge, name } });
+  onChangeFirstPrize = firstPrize => this.setState({ challenge: { ...this.state.challenge, firstPrize } });
+  onChangeSecondPrize = secondPrize => this.setState({ challenge: { ...this.state.challenge, secondPrize } });
+  onChangeThirdPrize = thirdPrize => this.setState({ challenge: { ...this.state.challenge, thirdPrize } });
   onChangeDescription = description => this.setState({ challenge: { ...this.state.challenge, description } });
   onChangeProgram = program => this.setState({ challenge: { ...this.state.challenge, programId: program.id } });
 

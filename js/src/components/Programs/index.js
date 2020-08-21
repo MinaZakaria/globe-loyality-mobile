@@ -31,21 +31,41 @@ class Programs extends Component {
         {this.renderHeader()}
         <View style={styles.programsContainer}>
           <View>
-            <Image source={images.programs.globeChampionLogo} />
-            <Image source={images.programs.elda7i7Logo} />
-            <Image source={images.programs.abkarinoLogo} />
+            <TouchableOpacity onPress={() => this.onProgramPress(2)}>
+              <Image source={images.programs.globeChampionLogo} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.onProgramPress(5)}>
+              <Image source={images.programs.elda7i7Logo} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.onProgramPress(1)}>
+              <Image source={images.programs.abkarinoLogo} />
+            </TouchableOpacity>
           </View>
           <View>
-            <Image source={images.programs.globeIdolLogo} />
-            <Image source={images.programs.selemElMagdLogo} />
-            <Image source={images.programs.talentCatchingLogo} />
+            <TouchableOpacity onPress={() => this.onProgramPress(3)}>
+              <Image source={images.programs.globeIdolLogo} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.onProgramPress(4)}>
+              <Image source={images.programs.selemElMagdLogo} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.onProgramPress(6)}>
+              <Image source={images.programs.talentCatchingLogo} />
+            </TouchableOpacity>
           </View>
         </View>
         <View style={styles.programsContainer}>
-          <Image source={images.programs.globeOlympicsLogo} />
+          <TouchableOpacity onPress={() => this.onProgramPress(7)}>
+            <Image source={images.programs.globeOlympicsLogo} />
+          </TouchableOpacity>
         </View>
       </View>
     );
+  }
+
+  onProgramPress = (programId) => {
+    const { navigation } = this.props;
+
+    navigation.navigate('ProgramDetails', { programId });
   }
 }
 

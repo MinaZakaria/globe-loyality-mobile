@@ -17,6 +17,7 @@ import ProfileScreen from './ProfileScreen';
 import SettingsScreen from './SettingsScreen';
 import ProgramsScreen from './ProgramsScreen';
 import ChallengesScreen from './ChallengesScreen';
+import ProgramDetailsScreen from './ProgramDetailsScreen';
 
 import RibbonWrapper from '../components/RibbonWrapper';
 import RibbonService from '../utils/RibbonService';
@@ -64,6 +65,7 @@ function AppNavigator(props) {
           (<>
             <Stack.Screen name="HomeDrawer" component={HomeDrawer} />
             <Stack.Screen name="Profile" component={ProfileScreen} />
+            <Stack.Screen name="ProgramDetails" component={ProgramDetailsScreen} />
           </>)}
       </Stack.Navigator>
       <RibbonWrapper

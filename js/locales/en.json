@@ -26,6 +26,9 @@
       "namePlaceholder": "Challenge name",
       "descriptionPlaceholder": "Create a new Challenge",
       "programsPlaceholder": "Program",
+      "firstPrize": "Fisrt Prize Points",
+      "secondPrize": "Second Prize Points",
+      "thirdPrize": "Third Prize Points",
       "button": "Create"
     }
   },

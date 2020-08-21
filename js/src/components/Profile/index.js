@@ -27,7 +27,6 @@ class Profile extends Component {
 
   render() {
     const { currentUser } = this.props;
-    console.log(currentUser);
     return (
       <View style={styles.container}>
         {this.renderHeader()}
@@ -37,6 +36,9 @@ class Profile extends Component {
             <Text>{currentUser.name}</Text>
             <Text>{currentUser.role.name}</Text>
           </View>
+        </View>
+        <View>
+          <Text style={styles.points}>Points: {currentUser.points}</Text>
         </View>
       </View>
     );

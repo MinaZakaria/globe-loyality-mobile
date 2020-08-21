@@ -10,26 +10,16 @@ export default StyleSheet.create({
     ...fonts.title,
     paddingTop: spacings.xl,
     paddingBottom: spacings.lg,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    marginLeft: 100
   },
   header: {
     marginHorizontal: 15,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
   },
-  mainInfo: {
-    marginTop: 20,
+  programsContainer: {
     flexDirection: 'row',
-    marginLeft: 40
-  },
-  mainText: {
-    marginLeft: 15,
-    marginTop: 10
-  },
-  points: {
-    marginLeft: 40,
-    marginTop: 20,
-    fontSize: 40
-  },
+    justifyContent: 'center'
+  }
 });
