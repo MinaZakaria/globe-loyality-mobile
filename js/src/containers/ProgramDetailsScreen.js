@@ -1,9 +1,11 @@
 import { connect } from 'react-redux';
 import ProgramDetails from '../components/ProgramDetails';
+import { getById as getProgramById } from '../selectors/programs';
 
 const mapStateToProps = (state, props) => {  //eslint-disable-line no-unused-vars
+  const programId = props.route.params.programId;
   return {
-    programId: props.route.params.programId
+    program: getProgramById(state, programId)
   };
 };
 

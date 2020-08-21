@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import Challenges from '../components/Challenges';
 import { listChallenges, createChallenge } from '../actions/challenges';
 import { getAllActive as getActiveChallenges } from '../selectors/challenges';
+import { getAll as getAllPrograms } from '../selectors/programs';
 
 import { actionWithPromise } from '../middlewares/promises';
 
 const mapStateToProps = state => {
   return {
-    challenges: getActiveChallenges(state)
+    challenges: getActiveChallenges(state),
+    programs: getAllPrograms(state)
   };
 };
 

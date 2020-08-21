@@ -7,7 +7,7 @@ import images from '../../../assets/images';
 class ProgramDetails extends Component {
 
   renderHeader = () => {
-    const { navigation, programId } = this.props;
+    const { navigation, program } = this.props;
     return (
       <View style={styles.header}>
         <TouchableOpacity
@@ -15,7 +15,7 @@ class ProgramDetails extends Component {
         >
           <Image source={images.arrows.back} />
         </TouchableOpacity>
-        <Text style={styles.containerTitle}>Program {programId}</Text>
+        <Text style={styles.containerTitle}>{program.name}</Text>
       </View>
     );
   };
@@ -32,7 +32,7 @@ class ProgramDetails extends Component {
 
 ProgramDetails.propTypes = {
   navigation: PropTypes.object,
-  programId: PropTypes.number
+  program: PropTypes.object
 };
 
 ProgramDetails.defaultProps = {

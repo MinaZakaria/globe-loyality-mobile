@@ -9,7 +9,7 @@ import ChallengeCard from './ChallengeCard';
 
 import ChallengeFormModal from './ChallengeFormModal';
 
-function Challenges({ t, navigation, challenges, fetchChallenges, onChallengePress, onCreateChallengePress }) {
+function Challenges({ t, navigation, challenges, fetchChallenges, onChallengePress, onCreateChallengePress, programs }) {
   useEffect(() => {
     const fetch = navigation.addListener('focus', () => {
       fetchChallenges();
@@ -17,17 +17,6 @@ function Challenges({ t, navigation, challenges, fetchChallenges, onChallengePre
     return fetch;
 
   }, [navigation]);
-
-  const programs = [
-    { id: 1, name: '3abkarino' },
-    { id: 2, name: 'Globe Champion' },
-    { id: 3, name: 'Globe Idol' },
-    { id: 4, name: 'Selm El-Magd' },
-    { id: 5, name: 'El-Da7ee7' },
-    { id: 6, name: 'Talent Catching' },
-    { id: 7, name: 'Globe Olympics' },
-    { id: 8, name: 'General' },
-  ];
 
   const renderChallenge = ({ item }) => {
     return <ChallengeCard challenge={item} onChallengePress={onPress} />;
@@ -118,10 +107,12 @@ Challenges.propTypes = {
   challenges: PropTypes.array,
   onChallengePress: PropTypes.func,
   onCreateChallengePress: PropTypes.func,
+  programs: PropTypes.array
 };
 
 Challenges.defaultProps = {
-  challenges: []
+  challenges: [],
+  programs: []
 };
 
 export default withTranslation('challenges')(Challenges);

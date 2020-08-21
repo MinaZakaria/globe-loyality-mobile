@@ -11,7 +11,7 @@ export default StyleSheet.create({
     paddingTop: spacings.xl,
     paddingBottom: spacings.lg,
     alignSelf: 'center',
-    marginLeft: 100
+    marginLeft: 75
   },
   header: {
     marginHorizontal: 15,
