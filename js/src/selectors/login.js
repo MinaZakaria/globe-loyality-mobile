@@ -5,6 +5,9 @@ export const getAccessToken = state => local(state).accessToken;
 
 export function getCurrentUser(state) {
   let currentUser = local(state).currentUser;
+  if (!currentUser) {
+    return null;
+  }
   currentUser.role = currentUser.roleId ? getUserRoleById(state, currentUser.roleId) : null;
   return currentUser;
 }

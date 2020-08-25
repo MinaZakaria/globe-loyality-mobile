@@ -19,7 +19,9 @@ export const colors = {
   shadow: '#000000',
   disabled: '#B7B7B8',
   paleGrey: '#F5F6FA',
-  blueShadow: '#1B254D'
+  blueShadow: '#1B254D',
+  selected: '#000000',
+  deselected: '#9b9999',
 };
 
 export const spacings = {

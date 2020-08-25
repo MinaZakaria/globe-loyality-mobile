@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './style';
-import images from '../../../assets/images';
+import images from '../../../../assets/images';
 
-class Profile extends Component {
+class ControlChallenges extends Component {
 
   renderHeader = () => {
     const { navigation } = this.props;
@@ -15,9 +15,9 @@ class Profile extends Component {
         >
           <Image source={images.menu} />
         </TouchableOpacity>
-        <Text style={styles.containerTitle}>Profile</Text>
+        <Text style={styles.containerTitle}>Control Challenges</Text>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Profile')}
+          onPress={() => navigation.navigate('Settings')}
         >
           <Image source={images.profile} />
         </TouchableOpacity>
@@ -26,31 +26,20 @@ class Profile extends Component {
   };
 
   render() {
-    const { currentUser } = this.props;
     return (
       <View style={styles.container}>
         {this.renderHeader()}
-        <View style={styles.mainInfo}>
-          <Image source={images.profile2} />
-          <View style={styles.mainText}>
-            <Text>{currentUser.name}</Text>
-            <Text>{currentUser.role ? currentUser.role.name : null}</Text>
-          </View>
-        </View>
-        <View>
-          <Text style={styles.points}>Points: {currentUser.points}</Text>
-        </View>
+        <Text style={{ alignSelf: 'center', marginTop: 100 }}>Control Challenges Screen</Text>
       </View>
     );
   }
 }
 
-Profile.propTypes = {
+ControlChallenges.propTypes = {
   navigation: PropTypes.object,
-  currentUser: PropTypes.object,
 };
 
-Profile.defaultProps = {
+ControlChallenges.defaultProps = {
 };
 
-export default Profile;
+export default ControlChallenges;

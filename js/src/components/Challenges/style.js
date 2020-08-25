@@ -33,4 +33,9 @@ export default StyleSheet.create({
     padding: spacings.sm,
     height: 100
   },
+  emptyText: {
+    ...fonts.midTitle,
+    alignSelf: 'center',
+    paddingTop: spacings.xxl,
+  }
 });

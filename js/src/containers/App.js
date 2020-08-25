@@ -8,6 +8,7 @@ import { createDrawerNavigator, DrawerItem, DrawerContentScrollView, DrawerItemL
 import images from '../../assets/images';
 
 import { getAccessToken } from '../selectors/login';
+import { getCurrentUser } from '../selectors/login';
 
 import { logout } from '../actions/logout';
 
@@ -18,13 +19,15 @@ import SettingsScreen from './SettingsScreen';
 import ProgramsScreen from './ProgramsScreen';
 import ChallengesScreen from './ChallengesScreen';
 import ProgramDetailsScreen from './ProgramDetailsScreen';
+import AdminPanelScreen from './AdminPanelScreen/AdminPanelScreen';
 
 import RibbonWrapper from '../components/RibbonWrapper';
 import RibbonService from '../utils/RibbonService';
 
 const mapStateToProps = state => {  //eslint-disable-line no-unused-vars
   return {
-    isSignedIn: !!getAccessToken(state)
+    isSignedIn: !!getAccessToken(state),
+    currentUser: getCurrentUser(state)
   };
 };
 
@@ -63,7 +66,7 @@ function AppNavigator(props) {
           )
           :
           (<>
-            <Stack.Screen name="HomeDrawer" component={HomeDrawer} />
+            <Stack.Screen name="HomeDrawer" component={HomeDrawerScreen} />
             <Stack.Screen name="Profile" component={ProfileScreen} />
             <Stack.Screen name="ProgramDetails" component={ProgramDetailsScreen} />
           </>)}
@@ -79,7 +82,13 @@ function AppNavigator(props) {
   );
 }
 
-function HomeDrawer() {
+const HomeDrawerScreen = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomeDrawer);
+
+function HomeDrawer(props) {
+  const { currentUser } = props;
   return (
     <Drawer.Navigator initialRouteName="Challenges" drawerContent={props => <CustomDrawerContentScreen {...props} />}>
       <Drawer.Screen
@@ -114,6 +123,14 @@ function HomeDrawer() {
           drawerIcon: () => (<Image source={images.programs.logo} />)  //eslint-disable-line
         }}
       />
+      {currentUser && currentUser.isAdmin ? <Drawer.Screen
+        name="AdminPanel"
+        component={AdminPanelScreen}
+        options={{
+          drawerLabel: 'Admin Panel',
+          drawerIcon: () => (<Image source={images.adminPanel} />)  //eslint-disable-line
+        }}
+      /> : null}
     </Drawer.Navigator>
   );
 }

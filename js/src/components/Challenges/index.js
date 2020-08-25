@@ -53,6 +53,14 @@ function Challenges({ t, navigation, challenges, fetchChallenges, onChallengePre
     );
   };
 
+  const renderEmptyComponent = () => {
+    return (
+      <Text style={styles.emptyText}>
+        No Active Challenges
+      </Text>
+    );
+  };
+
   const renderChallengeModal = () => {
     return (
       <ChallengeFormModal
@@ -91,6 +99,7 @@ function Challenges({ t, navigation, challenges, fetchChallenges, onChallengePre
       {renderHeader()}
       <FlatList
         ListHeaderComponent={renderCreateButton}
+        ListEmptyComponent={renderEmptyComponent}
         data={challenges}
         renderItem={renderChallenge}
         keyExtractor={challengesKeyExtractor}
