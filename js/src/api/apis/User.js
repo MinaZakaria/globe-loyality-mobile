@@ -32,4 +32,29 @@ export default class UserApi {
       }
     );
   }
+
+  list() {
+    return this.driver.get(
+      `${this.prefix}`,
+      {
+        Authorization: `Bearer ${this.getAccessToken()}`
+      }
+    );
+  }
+
+  editStatus(userId, statusId) {
+    let path = `${this.prefix}/${userId}`;
+    if (statusId === 1) {
+      path = `${path}/approve`;
+    } else if (statusId === 3) {
+      path = `${path}/block`;
+    }
+    return this.driver.post(
+      path,
+      {},
+      {
+        Authorization: `Bearer ${this.getAccessToken()}`
+      }
+    );
+  }
 }

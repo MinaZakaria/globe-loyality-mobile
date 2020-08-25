@@ -17,5 +17,16 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    borderBottomWidth: 1,
+    borderBottomColor: 'black'
   },
+  titleText: {
+    margin: 20,
+    ...fonts.midTitle
+  },
+  emptyText: {
+    ...fonts.midTitle,
+    alignSelf: 'center',
+    paddingTop: spacings.xs,
+  }
 });

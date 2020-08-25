@@ -17,7 +17,7 @@ class Settings extends Component {
         </TouchableOpacity>
         <Text style={styles.containerTitle}>Settings</Text>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Settings')}
+          onPress={() => navigation.navigate('Profile')}
         >
           <Image source={images.profile} />
         </TouchableOpacity>

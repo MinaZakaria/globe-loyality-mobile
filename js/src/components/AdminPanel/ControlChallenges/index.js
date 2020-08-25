@@ -17,7 +17,7 @@ class ControlChallenges extends Component {
         </TouchableOpacity>
         <Text style={styles.containerTitle}>Control Challenges</Text>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Settings')}
+          onPress={() => navigation.navigate('Profile')}
         >
           <Image source={images.profile} />
         </TouchableOpacity>

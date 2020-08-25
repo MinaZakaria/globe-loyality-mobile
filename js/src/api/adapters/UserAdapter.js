@@ -1,5 +1,11 @@
 import UserApi from '../apis/User';
 import { loginApiSuccess, loginApiFailure } from '../../actions/login';
+import {
+  listUsersApiSuccess,
+  listUsersApiFailure,
+  editUserStatusApiSuccess,
+  editUserStatusApiFailure
+} from '../../actions/users';
 import { signUpApiSuccess, signUpApiFailure } from '../../actions/signUp';
 import { logoutApiSuccess, logoutApiFailure } from '../../actions/logout';
 import UserMapper from '../mappers/UserMapper';
@@ -62,6 +68,42 @@ export default class UserAdapter {
           }
         })
         .catch(handleFailure(resolve, logoutApiFailure));
+    });
+  }
+
+  list() {
+    return new Promise((resolve) => {
+      this.userApi.list()
+        .then(([status, body]) => {
+          switch (status) {
+            case 200: {
+              const { users } = UserMapper.fromAPIList(body.data);
+              resolve(listUsersApiSuccess(users));
+              return;
+            }
+            default:
+              throw new HTTPCodeException({ status, body: ErrorMapper.fromAPI(body) });
+          }
+        })
+        .catch(handleFailure(resolve, listUsersApiFailure));
+    });
+  }
+
+  editStatus(userId, statusId) {
+    return new Promise((resolve) => {
+      this.userApi.editStatus(userId, statusId)
+        .then(([status, body]) => {
+          switch (status) {
+            case 200: {
+              const { user } = UserMapper.fromAPI(body.data);
+              resolve(editUserStatusApiSuccess(user));
+              return;
+            }
+            default:
+              throw new HTTPCodeException({ status, body: ErrorMapper.fromAPI(body) });
+          }
+        })
+        .catch(handleFailure(resolve, editUserStatusApiFailure));
     });
   }
 }

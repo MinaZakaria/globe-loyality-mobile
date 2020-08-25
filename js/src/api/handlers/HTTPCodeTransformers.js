@@ -7,6 +7,7 @@ import {
   UNAUTHENTICATED,
   ITEM_IS_PENDING,
   EMAIL_NOT_VERIFIED,
+  ITEM_IS_BLOCKED,
   TOKEN_INVALID,
   SERVER_ERROR
 } from '../../constants/ApiErrors';
@@ -23,6 +24,8 @@ const handle401 = (httpCodeException) => {
       return errorCreator(ITEM_IS_PENDING, {});
     if (httpCodeException.body.type == EMAIL_NOT_VERIFIED)
       return errorCreator(EMAIL_NOT_VERIFIED, {});
+    if (httpCodeException.body.type == ITEM_IS_BLOCKED)
+      return errorCreator(ITEM_IS_BLOCKED, {});
     if (httpCodeException.body.type == TOKEN_EXPIRED)
       return errorCreator(TOKEN_EXPIRED, {});
     if (httpCodeException.body.type == TOKEN_INVALID)

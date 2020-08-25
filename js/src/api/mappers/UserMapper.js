@@ -1,6 +1,7 @@
 import {
   checkHasId,
-  removeUndefinedKeys
+  removeUndefinedKeys,
+  uniqueEntities
 } from '../../utils/helpers';
 
 export function fromAPI(apiEmployee) {
@@ -22,6 +23,22 @@ export function fromAPI(apiEmployee) {
   };
 }
 
+export function fromAPIList(apiUsers) {
+  let result = {
+    users: [],
+  };
+  let allUsers = [];
+
+  apiUsers.forEach(apiUser => {
+    const { user } = fromAPI(apiUser);
+    allUsers.push(user);
+  });
+
+  result.users = uniqueEntities(allUsers);
+
+  return result;
+}
+
 export function toAPI(user) {
   return removeUndefinedKeys({
     name: user.name,
@@ -34,5 +51,6 @@ export function toAPI(user) {
 
 export default {
   fromAPI,
+  fromAPIList,
   toAPI
 };

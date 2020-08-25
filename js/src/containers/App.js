@@ -89,6 +89,7 @@ const HomeDrawerScreen = connect(
 
 function HomeDrawer(props) {
   const { currentUser } = props;
+  console.log('currentUser', currentUser);
   return (
     <Drawer.Navigator initialRouteName="Challenges" drawerContent={props => <CustomDrawerContentScreen {...props} />}>
       <Drawer.Screen
@@ -123,15 +124,24 @@ function HomeDrawer(props) {
           drawerIcon: () => (<Image source={images.programs.logo} />)  //eslint-disable-line
         }}
       />
-      {currentUser && currentUser.isAdmin ? <Drawer.Screen
+      <Drawer.Screen
         name="AdminPanel"
         component={AdminPanelScreen}
         options={{
           drawerLabel: 'Admin Panel',
           drawerIcon: () => (<Image source={images.adminPanel} />)  //eslint-disable-line
         }}
-      /> : null}
+      />
     </Drawer.Navigator>
+    //   {currentUser && currentUser.isAdmin ? <Drawer.Screen
+    //     name="AdminPanel"
+    //     component={AdminPanelScreen}
+    //     options={{
+    //       drawerLabel: 'Admin Panel',
+    //       drawerIcon: () => (<Image source={images.adminPanel} />)  //eslint-disable-line
+    //     }}
+    //   /> : null}
+    // </Drawer.Navigator>
   );
 }
 

@@ -33,12 +33,12 @@ class Profile extends Component {
         <View style={styles.mainInfo}>
           <Image source={images.profile2} />
           <View style={styles.mainText}>
-            <Text>{currentUser.name}</Text>
-            <Text>{currentUser.role ? currentUser.role.name : null}</Text>
+            <Text>{currentUser ? currentUser.name : null}</Text>
+            <Text>{currentUser && currentUser.role ? currentUser.role.name : null}</Text>
           </View>
         </View>
         <View>
-          <Text style={styles.points}>Points: {currentUser.points}</Text>
+          <Text style={styles.points}>Points: {currentUser ? currentUser.points : null}</Text>
         </View>
       </View>
     );

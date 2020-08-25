@@ -9,6 +9,7 @@ export default {
     back2: require('./arrows/back2.png')
   },
   adminPanel: require('./adminPanel/adminPanel.png'),
+  approve: require('./approve/approve.png'),
   settings: require('./settings/settings.png'),
   challenges: {
     icon: require('./challenges/icon.png'),

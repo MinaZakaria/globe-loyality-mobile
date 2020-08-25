@@ -8,7 +8,8 @@
     "errors": {
       "UN_AUTHENTICATED": "Wrong email or password",
       "ITEM_IS_PENDING": "You are waiting admin approval",
-      "EMAIL_NOT_VERIFIED": "You Should Verify your email first"
+      "EMAIL_NOT_VERIFIED": "You Should Verify your email first",
+      "ITEM_IS_BLOCKED": "You are blocked, please contact the admin!"
     }
   },
   "signup": {
