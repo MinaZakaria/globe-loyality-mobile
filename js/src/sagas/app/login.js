@@ -27,7 +27,9 @@ function* worker(action) {
   }
 
   const accessToken = loginApiResultAction.payload.accessToken;
+  const currentUser = loginApiResultAction.payload.currentUser;
 
   yield put(saveToLocalStorage('accessToken', accessToken));
+  yield put(saveToLocalStorage('currentUser', JSON.stringify(currentUser)));
   yield put(loginSuccess());
 }

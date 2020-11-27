@@ -21,5 +21,15 @@ export default StyleSheet.create({
   programsContainer: {
     flexDirection: 'row',
     justifyContent: 'center'
+  },
+  image: {
+    alignSelf: 'center',
+    width: 400,
+    height: 400
+  },
+  emptyText: {
+    ...fonts.midTitle,
+    alignSelf: 'center',
+    paddingTop: spacings.xxl,
   }
 });

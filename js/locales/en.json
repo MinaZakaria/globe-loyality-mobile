@@ -21,15 +21,17 @@
     "passwordConfirmationPlaceholder": "Password Confirmation",
     "rolesPlaceholder": "Role"
   },
+  "submit": {
+    "errors": {
+      "ITEM_ALREADY_SUBMITTED": "You already Submitted on this challenge before."
+    }
+  },
   "challenges": {
     "title": "Challenges",
     "create": {
       "namePlaceholder": "Challenge name",
       "descriptionPlaceholder": "Create a new Challenge",
       "programsPlaceholder": "Program",
-      "firstPrize": "Fisrt Prize Points",
-      "secondPrize": "Second Prize Points",
-      "thirdPrize": "Third Prize Points",
       "button": "Create"
     }
   },

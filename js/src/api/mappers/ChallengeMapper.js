@@ -16,9 +16,6 @@ export function fromAPI(apiChallenge) {
       programId: apiChallenge.program_id,
       createdBy: apiChallenge.created_by,
       isActive: apiChallenge.is_active,
-      firstPrize: apiChallenge.first_prize,
-      secondPrize: apiChallenge.second_prize,
-      thirdPrize: apiChallenge.third_prize,
       createdAt: apiChallenge.created_at,
       updatedAt: apiChallenge.updated_at,
     }),
@@ -46,9 +43,6 @@ export function toAPI(challenge) {
     name: challenge.name,
     description: challenge.description,
     program_id: challenge.programId,
-    first_prize: challenge.firstPrize,
-    second_prize: challenge.secondPrize,
-    third_prize: challenge.thirdPrize,
   });
 }
 

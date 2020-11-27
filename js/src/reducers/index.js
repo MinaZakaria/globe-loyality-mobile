@@ -5,6 +5,7 @@ import users from './users';
 import programs from './programs';
 import userRoles from './userRoles';
 import challenges from './challenges';
+import challengeSubmittions from './challengeSubmittions';
 
 export default combineReducers({
   login,
@@ -12,4 +13,5 @@ export default combineReducers({
   programs,
   userRoles,
   challenges,
+  challengeSubmittions,
 });

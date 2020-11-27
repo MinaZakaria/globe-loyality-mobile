@@ -6,13 +6,16 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import images from '../../../assets/images';
 import { colors } from '../../styles';
 
+import { getCurrentUser } from '../../selectors/login';
+
 import ControlUsersScreen from './ControlUsersScreen';
 import ControlChallengesScreen from './ControlChallengesScreen';
-
+import ControlSubmitionsScreen from './ControlSubmitionsScreen';
 
 
 const mapStateToProps = state => {  //eslint-disable-line no-unused-vars
   return {
+    currentUser: getCurrentUser(state)
   };
 };
 
@@ -26,17 +29,17 @@ const AdminPanelScreen = connect(
   mapDispatchToProps
 )(AdminPanelTab);
 
-function AdminPanelTab() {
+function AdminPanelTab(props) {
+  const { currentUser } = props;  //eslint-disable-line
   const Tab = createBottomTabNavigator();
 
   return (
     <Tab.Navigator
       initialRouteName={ControlChallengesScreen}
       screenOptions={({ route }) => ({
-        // eslint-disable-next-line react/display-name
-        tabBarIcon: ({ focused }) => {
+        tabBarIcon: ({ focused }) => {  //eslint-disable-line
           return (
-            <View style={{alignItems: 'center'}}>
+            <View style={{ alignItems: 'center' }}>
               <Image
                 source={ScreenOptions[route.name].icon}
                 style={{ tintColor: focused ? colors.selected : colors.deselected }}
@@ -57,6 +60,7 @@ function AdminPanelTab() {
     >
       <Tab.Screen name="ControlUsersScreen" component={ControlUsersScreen} />
       <Tab.Screen name="ControlChallengesScreen" component={ControlChallengesScreen} />
+      <Tab.Screen name="ControlSubmitionsScreen" component={ControlSubmitionsScreen} />
     </Tab.Navigator>
   );
 }
@@ -69,6 +73,10 @@ const ScreenOptions = {
   ControlChallengesScreen: {
     icon: images.challenges.icon,
     title: 'Challenges'
+  },
+  ControlSubmitionsScreen: {
+    icon: images.challenges.icon,
+    title: 'Review Challenges'
   },
 };
 

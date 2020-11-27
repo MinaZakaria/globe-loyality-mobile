@@ -24,3 +24,9 @@ export const getAllActive = (state) => {
     return challenge.isActive;
   }).sort((o1, o2) => o2.id - o1.id);
 };
+
+export const getProgramChallenges = (state, programId) => {
+  return getAllActive(state).filter(challenge => {
+    return challenge.programId == programId;
+  });
+};

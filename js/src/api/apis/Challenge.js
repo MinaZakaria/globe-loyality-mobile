@@ -29,4 +29,16 @@ export default class ChallengeApi {
       }
     );
   }
+
+  submit(data) {
+    return this.driver.post(
+      `${this.prefix}/${data['challenge_id']}/submit`,
+      {
+        ...data
+      },
+      {
+        Authorization: `Bearer ${this.getAccessToken()}`
+      }
+    );
+  }
 }

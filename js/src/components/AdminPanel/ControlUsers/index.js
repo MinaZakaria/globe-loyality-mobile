@@ -1,5 +1,5 @@
- import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, Image, FlatList, ScrollView } from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, TouchableOpacity, Image, FlatList, ScrollView, RefreshControl } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './style';
 import images from '../../../../assets/images';
@@ -12,7 +12,8 @@ class ControlUsers extends Component {
     super(props);
     this.state = {
       error: null,
-      loading: false
+      loading: false,
+      refreshing: false,
     };
   }
 
@@ -23,6 +24,15 @@ class ControlUsers extends Component {
       })
       .catch((error) => {
         this.setState({ loading: false, error });
+      });
+  }
+
+  onRefresh() {
+    this.setState({ refreshing: true });
+
+    this.props.fetchUsers()
+      .then(() => {
+        this.setState({ refreshing: false });
       });
   }
 
@@ -49,7 +59,11 @@ class ControlUsers extends Component {
     return (
       <View style={styles.container}>
         {this.renderHeader()}
-        <ScrollView>
+        <ScrollView
+          refreshControl={
+            <RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh.bind(this)} />
+          }
+        >
           {this.renderPending()}
           {this.renderActive()}
           {this.renderInActive()}

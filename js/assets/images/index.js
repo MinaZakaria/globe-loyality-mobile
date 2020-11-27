@@ -36,5 +36,7 @@ export default {
     5: require('./programs/elda7i7/challenge.png'),
     6: require('./programs/talentCatching/challenge.png'),
     7: require('./programs/globeOlympics/challenge.png'),
-  }
+  },
+  folder: require('./folder/folder.png'),
+  uploadDefault: require('./uploadDefault/uploadDefault.png'),
 };

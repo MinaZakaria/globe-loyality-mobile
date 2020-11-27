@@ -20,6 +20,7 @@ import ProgramsScreen from './ProgramsScreen';
 import ChallengesScreen from './ChallengesScreen';
 import ProgramDetailsScreen from './ProgramDetailsScreen';
 import AdminPanelScreen from './AdminPanelScreen/AdminPanelScreen';
+import SubmitChallengeScreen from './SubmitChallengeScreen/SubmitChallengeScreen';
 
 import RibbonWrapper from '../components/RibbonWrapper';
 import RibbonService from '../utils/RibbonService';
@@ -69,6 +70,7 @@ function AppNavigator(props) {
             <Stack.Screen name="HomeDrawer" component={HomeDrawerScreen} />
             <Stack.Screen name="Profile" component={ProfileScreen} />
             <Stack.Screen name="ProgramDetails" component={ProgramDetailsScreen} />
+            <Stack.Screen name="SubmitChallenge" component={SubmitChallengeScreen} />
           </>)}
       </Stack.Navigator>
       <RibbonWrapper
@@ -88,8 +90,7 @@ const HomeDrawerScreen = connect(
 )(HomeDrawer);
 
 function HomeDrawer(props) {
-  const { currentUser } = props;
-  console.log('currentUser', currentUser);
+  const { currentUser } = props;  //eslint-disable-line
   return (
     <Drawer.Navigator initialRouteName="Challenges" drawerContent={props => <CustomDrawerContentScreen {...props} />}>
       <Drawer.Screen
@@ -124,24 +125,15 @@ function HomeDrawer(props) {
           drawerIcon: () => (<Image source={images.programs.logo} />)  //eslint-disable-line
         }}
       />
-      <Drawer.Screen
+      {currentUser && currentUser.isAdmin ? <Drawer.Screen
         name="AdminPanel"
         component={AdminPanelScreen}
         options={{
           drawerLabel: 'Admin Panel',
           drawerIcon: () => (<Image source={images.adminPanel} />)  //eslint-disable-line
         }}
-      />
+      /> : undefined}
     </Drawer.Navigator>
-    //   {currentUser && currentUser.isAdmin ? <Drawer.Screen
-    //     name="AdminPanel"
-    //     component={AdminPanelScreen}
-    //     options={{
-    //       drawerLabel: 'Admin Panel',
-    //       drawerIcon: () => (<Image source={images.adminPanel} />)  //eslint-disable-line
-    //     }}
-    //   /> : null}
-    // </Drawer.Navigator>
   );
 }
 

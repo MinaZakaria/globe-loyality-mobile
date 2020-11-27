@@ -8,6 +8,9 @@ import listUserRoles from './listUserRoles';
 import listChallenges from './listChallenges';
 import editUserStatus from './editUserStatus';
 import createChallenges from './createChallenges';
+import submitChallenges from './submitChallenges';
+import listSubmittions from './listSubmittions';
+import editSubmittionStatus from './editSubmittionStatus';
 
 export default function* apiSaga() {
   yield all([
@@ -20,5 +23,8 @@ export default function* apiSaga() {
     listChallenges(),
     editUserStatus(),
     createChallenges(),
+    submitChallenges(),
+    listSubmittions(),
+    editSubmittionStatus(),
   ]);
 }
