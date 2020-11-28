@@ -17,7 +17,7 @@ export default StyleSheet.create({
     padding: spacings.sm,
   },
   title: {
-    ...fonts.headline,
+    ...fonts.midTitle,
     paddingBottom: spacings.xxs
   },
   text: {
@@ -25,7 +25,7 @@ export default StyleSheet.create({
     paddingBottom: spacings.xxs
   },
   pointsText: {
-    ...fonts.headline,
+    ...fonts.midTitle,
     alignSelf: 'center',
     paddingBottom: spacings.xxs
   },
@@ -35,7 +35,7 @@ export default StyleSheet.create({
   },
   programImage: {
     height: 100,
-    flex: 0.2
+    flex: 0.3
   },
   challengeInfoContainer: {
     flexDirection: 'row',
@@ -44,7 +44,7 @@ export default StyleSheet.create({
   },
   challengeInfo: {
     flexDirection: 'column',
-    flex: 0.8,
+    flex: 0.7,
   },
   userInfoContainer: {
     flexDirection: 'row',
@@ -53,11 +53,15 @@ export default StyleSheet.create({
   },
   userInfo: {
     flexDirection: 'column',
-    flex: 0.5,
+    flex: 0.7,
   },
   submittionImage: {
-    height: 50,
-    width: 40,
-    // flex: 0.2
-  }
+    height: 100,
+    flex: 0.3
+  },
+  closeModalButton: {
+    height: 60,
+    backgroundColor: 'black',
+    padding: 30,
+  },
 });

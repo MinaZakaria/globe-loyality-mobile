@@ -22,10 +22,10 @@ export default StyleSheet.create({
   },
   titleText: {
     margin: 20,
-    ...fonts.midTitle
+    ...fonts.headline
   },
   emptyText: {
-    ...fonts.midTitle,
+    ...fonts.body,
     alignSelf: 'center',
     paddingTop: spacings.xs,
   }

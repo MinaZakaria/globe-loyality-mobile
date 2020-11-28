@@ -39,4 +39,5 @@ export default {
   },
   folder: require('./folder/folder.png'),
   uploadDefault: require('./uploadDefault/uploadDefault.png'),
+  testSubmittion: require('./testSubmittion/testSubmittion.png'),
 };
