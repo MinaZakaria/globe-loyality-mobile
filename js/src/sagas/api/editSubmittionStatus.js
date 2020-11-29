@@ -15,6 +15,6 @@ function* worker(action) {
   const accessToken = yield select(getAccessToken);
   const challengeSubmittionsAdapter = createPosApi(() => accessToken).challengeSubmittions;
 
-  const resultAction = yield apply(challengeSubmittionsAdapter, challengeSubmittionsAdapter.editStatus, [payload.challengeSubmittionId, payload.statusId]);
+  const resultAction = yield apply(challengeSubmittionsAdapter, challengeSubmittionsAdapter.editStatus, [payload.challengeSubmittionId, payload.statusId, payload.comment]);
   yield put(resultAction);
 }

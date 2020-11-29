@@ -11,6 +11,7 @@ class ControlSubmitions extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      comment: null,
       error: null,
       loading: false,
       refreshing: false,
@@ -84,6 +85,7 @@ class ControlSubmitions extends Component {
             <SubmittionCard
               submittion={item}
               actions={this.renderNewActions(item.id)}
+              onChangeComment={comment => this.setState({ comment })}
             />
           }
           keyExtractor={item => item.id.toString()}
@@ -103,6 +105,7 @@ class ControlSubmitions extends Component {
             <SubmittionCard
               submittion={item}
               actions={this.renderApprovedActions(item.id)}
+              onChangeComment={comment => this.setState({ comment })}
             />
           }
           keyExtractor={item => item.id.toString()}
@@ -122,6 +125,7 @@ class ControlSubmitions extends Component {
             <SubmittionCard
               submittion={item}
               actions={this.renderRejectedActions(item.id)}
+              onChangeComment={comment => this.setState({ comment })}
             />
           }
           keyExtractor={item => item.id.toString()}
@@ -141,6 +145,7 @@ class ControlSubmitions extends Component {
             <SubmittionCard
               submittion={item}
               actions={this.renderDeclinedActions(item.id)}
+              onChangeComment={comment => this.setState({ comment })}
             />
           }
           keyExtractor={item => item.id.toString()}
@@ -150,13 +155,14 @@ class ControlSubmitions extends Component {
   }
 
   renderNewActions = (id) => {
+    const { comment } = this.state;
     let buttons = [];
     buttons.push(
       <GeneralButton
         size='small'
         type='friendly'
         title='Approve'
-        onPress={() => this.props.approveSubmittion(id)}
+        onPress={() => this.props.approveSubmittion(id, comment)}
       />
     );
     buttons.push(
@@ -164,7 +170,7 @@ class ControlSubmitions extends Component {
         size='small'
         type='careful'
         title='Decline'
-        onPress={() => this.props.declinedSubmittions(id)}
+        onPress={() => this.props.declineSubmittion(id, comment)}
       />
     );
     buttons.push(
@@ -172,7 +178,7 @@ class ControlSubmitions extends Component {
         size='small'
         type='careful'
         title='Reject'
-        onPress={() => this.props.rejectedSubmittions(id)}
+        onPress={() => this.props.rejectSubmittion(id, comment)}
       />
     );
     return buttons;
@@ -192,13 +198,15 @@ class ControlSubmitions extends Component {
   }
 
   renderRejectedActions = (id) => {
+    const { comment } = this.state;
+
     let buttons = [];
     buttons.push(
       <GeneralButton
         size='small'
         type='friendly'
         title='Approve'
-        onPress={() => this.props.approveSubmittion(id)}
+        onPress={() => this.props.approveSubmittion(id, comment)}
       />
     );
     buttons.push(
@@ -206,20 +214,22 @@ class ControlSubmitions extends Component {
         size='small'
         type='careful'
         title='Decline'
-        onPress={() => this.props.declinedSubmittions(id)}
+        onPress={() => this.props.declineSubmittion(id, comment)}
       />
     );
     return buttons;
   }
 
   renderDeclinedActions = (id) => {
+    const { comment } = this.state;
+
     let buttons = [];
     buttons.push(
       <GeneralButton
         size='small'
         type='friendly'
         title='Approve'
-        onPress={() => this.props.approvedSubmittions(id)}
+        onPress={() => this.props.approveSubmittion(id, comment)}
       />
     );
     buttons.push(
@@ -227,7 +237,7 @@ class ControlSubmitions extends Component {
         size='small'
         type='careful'
         title='Decline'
-        onPress={() => this.props.declinedSubmittions(id)}
+        onPress={() => this.props.declineSubmittion(id, comment)}
       />
     );
     return buttons;

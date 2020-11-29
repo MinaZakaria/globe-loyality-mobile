@@ -16,7 +16,7 @@ export default class ChallengeSubmittion {
     );
   }
 
-  editStatus(submittionId, statusId) {
+  editStatus(submittionId, statusId, comment) {
     let path = `${this.prefix}/${submittionId}`;
     if (statusId === APPROVED) {
       path = `${path}/approve`;
@@ -27,7 +27,9 @@ export default class ChallengeSubmittion {
     }
     return this.driver.post(
       path,
-      {},
+      {
+        comment
+      },
       {
         Authorization: `Bearer ${this.getAccessToken()}`
       }

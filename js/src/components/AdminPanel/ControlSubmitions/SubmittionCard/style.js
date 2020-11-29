@@ -64,4 +64,7 @@ export default StyleSheet.create({
     backgroundColor: 'black',
     padding: 30,
   },
+  commentContainerStyle: {
+    width: 350
+  }
 });

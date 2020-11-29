@@ -20,19 +20,19 @@ const mapDispatchToProps = dispatch => {
       const listAction = listChallengeSubmittionsApi();
       return dispatch(actionWithPromise(listAction));
     },
-    approveSubmittion: (id) => {
+    approveSubmittion: (id, comment = null) => {
       let statusId = APPROVED;
-      const action = editChallengeSubmittionStatusApi(id, statusId);
+      const action = editChallengeSubmittionStatusApi(id, statusId, comment);
       return dispatch(actionWithPromise(action));
     },
-    rejectSubmittion: (id) => {
+    rejectSubmittion: (id, comment = null) => {
       let statusId = REJECTED;
-      const action = editChallengeSubmittionStatusApi(id, statusId);
+      const action = editChallengeSubmittionStatusApi(id, statusId, comment);
       return dispatch(actionWithPromise(action));
     },
-    declineSubmittion: (id) => {
+    declineSubmittion: (id, comment = null) => {
       let statusId = DECLINED;
-      const action = editChallengeSubmittionStatusApi(id, statusId);
+      const action = editChallengeSubmittionStatusApi(id, statusId, comment);
       return dispatch(actionWithPromise(action));
     },
   };

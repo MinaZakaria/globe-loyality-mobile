@@ -43,10 +43,10 @@ export function listChallengeSubmittionsApiFailure(error = null) {
   };
 }
 
-export function editChallengeSubmittionStatusApi(challengeSubmittionId, statusId) {
+export function editChallengeSubmittionStatusApi(challengeSubmittionId, statusId, comment = null) {
   return {
     type: EDIT_CHALLENGE_SUBMITTIONS_STATUS_API_REQUEST,
-    payload: { challengeSubmittionId, statusId }
+    payload: { challengeSubmittionId, statusId, comment }
   };
 }
 

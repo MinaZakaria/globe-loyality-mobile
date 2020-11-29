@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Programs from '../../constants/Programs';
 
 import SubmitElDa7ee7Screen from './SubmitElDa7ee7Screen';
-// import SubmitGlobeIdolScreen from './SubmitGlobeIdolScreen';
+import SubmitGlobeIdolScreen from './SubmitGlobeIdolScreen';
 import SubmitGlobeOlympicsScreen from './SubmitGlobeOlympicsScreen';
 
 
@@ -36,8 +36,11 @@ function SubmitChallengeNavigator(props) {
           {(props) => <SubmitElDa7ee7Screen {...props} challengeId={challengeId} />}
         </Stack.Screen>
       }
-      {/* {programId === Programs.EL_DA7EE7 && <Stack.Screen name="SubmitElDa7ee7" component={SubmitElDa7ee7Screen} />} */}
-      {/* {challengeId === Programs.GLOBE_IDOL && <Stack.Screen name="SubmitGlobeIdol" component={SubmitGlobeIdolScreen} />} */}
+      {programId === Programs.GLOBE_IDOL &&
+        <Stack.Screen name='SubmitGlobeIdol'>
+          {(props) => <SubmitGlobeIdolScreen {...props} challengeId={challengeId} />}
+        </Stack.Screen>
+      }
       {programId === Programs.GLOBE_OLYMPICS && <Stack.Screen name="SubmitGlobeOlympics" component={SubmitGlobeOlympicsScreen} />}
     </Stack.Navigator>
   );

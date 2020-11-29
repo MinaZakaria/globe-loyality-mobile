@@ -4,8 +4,9 @@ import ImageViewer from 'react-native-image-zoom-viewer';
 import PropTypes from 'prop-types';
 import styles from './style';
 import images from '../../../../../assets/images';
+import TextInput from '../../../TextInput';
 
-function SubmittionCard({ submittion, actions }) {
+function SubmittionCard({ submittion, actions, onChangeComment }) {
   const [showModal, setShowModal] = useState(false);
 
   const renderActions = () => {
@@ -35,11 +36,21 @@ function SubmittionCard({ submittion, actions }) {
           <Text style={styles.title}>User: {submittion.user.name}</Text>
           <Text style={styles.text}>{submittion.user.email}</Text>
         </View>
-        <TouchableWithoutFeedback onPress={() => setShowModal(true)}>
+        {submittion.image ? <TouchableWithoutFeedback onPress={() => setShowModal(true)}>
           <Image source={images.testSubmittion} style={styles.submittionImage} />
-        </TouchableWithoutFeedback>
+        </TouchableWithoutFeedback> : undefined}
       </View>
       <Text style={styles.pointsText}>{submittion.user.name} collects {submittion.points} points.</Text>
+      <TextInput
+        containerStyle={styles.commentContainerStyle}
+        autoCorrect={false}
+        label='Write comment...'
+        onChangeText={onChangeComment}
+        autoCapitalize='none'
+        multiline={true}
+        maxLength={300}
+        // defaultValue={comment}
+      />
       {renderActions()}
       <Modal visible={showModal} transparent={true}>
         <TouchableHighlight
@@ -56,7 +67,8 @@ function SubmittionCard({ submittion, actions }) {
 
 SubmittionCard.propTypes = {
   submittion: PropTypes.object,
-  actions: PropTypes.any
+  actions: PropTypes.any,
+  onChangeComment: PropTypes.func
 };
 
 export default SubmittionCard;

@@ -33,10 +33,10 @@ export default class ChallengeSubmittionAdapter {
     });
   }
 
-  editStatus(submittionId, statusId) {
+  editStatus(submittionId, statusId, comment) {
     console.log('editStatus', submittionId, statusId);
     return new Promise((resolve) => {
-      this.challengeSubmittionApi.editStatus(submittionId, statusId)
+      this.challengeSubmittionApi.editStatus(submittionId, statusId, comment)
         .then(([status, body]) => {
           switch (status) {
             case 200: {
