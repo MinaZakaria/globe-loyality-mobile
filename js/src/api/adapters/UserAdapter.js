@@ -4,7 +4,9 @@ import {
   listUsersApiSuccess,
   listUsersApiFailure,
   editUserStatusApiSuccess,
-  editUserStatusApiFailure
+  editUserStatusApiFailure,
+  getMeApiSuccess,
+  getMeApiFailure
 } from '../../actions/users';
 import { signUpApiSuccess, signUpApiFailure } from '../../actions/signUp';
 import { logoutApiSuccess, logoutApiFailure } from '../../actions/logout';
@@ -104,6 +106,24 @@ export default class UserAdapter {
           }
         })
         .catch(handleFailure(resolve, editUserStatusApiFailure));
+    });
+  }
+
+  getMe() {
+    return new Promise((resolve) => {
+      this.userApi.getMe()
+        .then(([status, body]) => {
+          switch (status) {
+            case 200: {
+              const { user } = UserMapper.fromAPI(body.data);
+              resolve(getMeApiSuccess(user));
+              return;
+            }
+            default:
+              throw new HTTPCodeException({ status, body: ErrorMapper.fromAPI(body) });
+          }
+        })
+        .catch(handleFailure(resolve, getMeApiFailure));
     });
   }
 }

@@ -15,6 +15,7 @@ export const LOGOUT = 'LOGOUT';
 export const SIGN_UP = 'SIGN_UP';
 export const LOGIN_API = 'LOGIN_API';
 export const LOGOUT_API = 'LOGOUT_API';
+export const GET_ME_API = 'GET_ME_API';
 export const EXPIRE_TOKEN = 'EXPIRE_TOKEN';
 export const LIST_USERS_API = 'LIST_USERS_API';
 export const LIST_CHALLENGES = 'LIST_CHALLENGES';

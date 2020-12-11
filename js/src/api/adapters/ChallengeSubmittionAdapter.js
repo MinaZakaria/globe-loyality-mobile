@@ -34,14 +34,12 @@ export default class ChallengeSubmittionAdapter {
   }
 
   editStatus(submittionId, statusId, comment) {
-    console.log('editStatus', submittionId, statusId);
     return new Promise((resolve) => {
       this.challengeSubmittionApi.editStatus(submittionId, statusId, comment)
         .then(([status, body]) => {
           switch (status) {
             case 200: {
               const { submittion } = ChallengeSubmittionMapper.fromAPI(body.data);
-              console.log('200', submittion);
               resolve(editChallengeSubmittionStatusApiSuccess(submittion));
               return;
             }

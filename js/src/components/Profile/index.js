@@ -6,6 +6,16 @@ import images from '../../../assets/images';
 
 class Profile extends Component {
 
+  componentDidMount() {
+    this._unsubscribe = this.props.navigation.addListener('focus', () => {
+      this.props.fetchMe();
+    });
+  }
+
+  componentWillUnmount() {
+    this._unsubscribe();
+  }
+
   renderHeader = () => {
     const { navigation } = this.props;
     return (
@@ -48,6 +58,7 @@ class Profile extends Component {
 Profile.propTypes = {
   navigation: PropTypes.object,
   currentUser: PropTypes.object,
+  fetchMe: PropTypes.func,
 };
 
 Profile.defaultProps = {

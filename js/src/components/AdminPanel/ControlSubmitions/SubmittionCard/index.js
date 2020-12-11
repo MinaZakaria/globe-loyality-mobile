@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import styles from './style';
 import images from '../../../../../assets/images';
 import TextInput from '../../../TextInput';
+import { NEW, APPROVED, REJECTED } from '../../../../constants/ChallengeSubmittionStatueses';
 
 function SubmittionCard({ submittion, actions, onChangeComment }) {
   const [showModal, setShowModal] = useState(false);
@@ -15,6 +16,41 @@ function SubmittionCard({ submittion, actions, onChangeComment }) {
         {actions}
       </View>
     );
+  };
+
+  const renderComment = () => {
+    switch (submittion.statusId) {
+      case NEW:
+        return (
+          <TextInput
+            containerStyle={styles.commentContainerStyle}
+            autoCorrect={false}
+            label='Write comment...'
+            onChangeText={onChangeComment}
+            autoCapitalize='none'
+            multiline={true}
+            maxLength={300}
+          // defaultValue={comment}
+          />
+        );
+
+      case APPROVED:
+        return submittion.comment ? (
+          <Text style={styles.title}>
+            Comment: {submittion.comment}
+          </Text>
+        ) : undefined;
+
+      case REJECTED:
+        return submittion.comment ? (
+          <Text style={styles.title}>
+            Comment: {submittion.comment}
+          </Text>
+        ) : undefined;
+
+      default:
+        break;
+    }
   };
 
   const modalImages = [{
@@ -41,16 +77,7 @@ function SubmittionCard({ submittion, actions, onChangeComment }) {
         </TouchableWithoutFeedback> : undefined}
       </View>
       <Text style={styles.pointsText}>{submittion.user.name} collects {submittion.points} points.</Text>
-      <TextInput
-        containerStyle={styles.commentContainerStyle}
-        autoCorrect={false}
-        label='Write comment...'
-        onChangeText={onChangeComment}
-        autoCapitalize='none'
-        multiline={true}
-        maxLength={300}
-        // defaultValue={comment}
-      />
+      {renderComment()}
       {renderActions()}
       <Modal visible={showModal} transparent={true}>
         <TouchableHighlight

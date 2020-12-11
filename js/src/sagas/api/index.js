@@ -11,6 +11,7 @@ import createChallenges from './createChallenges';
 import submitChallenges from './submitChallenges';
 import listSubmittions from './listSubmittions';
 import editSubmittionStatus from './editSubmittionStatus';
+import getMeApi from './getMeApi';
 
 export default function* apiSaga() {
   yield all([
@@ -26,5 +27,6 @@ export default function* apiSaga() {
     submitChallenges(),
     listSubmittions(),
     editSubmittionStatus(),
+    getMeApi(),
   ]);
 }

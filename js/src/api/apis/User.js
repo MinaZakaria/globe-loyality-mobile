@@ -57,4 +57,13 @@ export default class UserApi {
       }
     );
   }
+
+  getMe() {
+    return this.driver.get(
+      `${this.prefix}/me`,
+      {
+        Authorization: `Bearer ${this.getAccessToken()}`
+      }
+    );
+  }
 }

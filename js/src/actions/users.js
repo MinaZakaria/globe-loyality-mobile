@@ -3,6 +3,7 @@ import {
 
   LIST_USERS_API,
   EDIT_USER_STATUS_API,
+  GET_ME_API,
 
   REQUEST,
   SUCCESS,
@@ -19,6 +20,10 @@ export const LIST_USERS_API_FAILURE = getActionType(LIST_USERS_API, FAILURE);
 export const EDIT_USER_STATUS_API_REQUEST = getActionType(EDIT_USER_STATUS_API, REQUEST);
 export const EDIT_USER_STATUS_API_SUCCESS = getActionType(EDIT_USER_STATUS_API, SUCCESS);
 export const EDIT_USER_STATUS_API_FAILURE = getActionType(EDIT_USER_STATUS_API, FAILURE);
+
+export const GET_ME_API_REQUEST = getActionType(GET_ME_API, REQUEST);
+export const GET_ME_API_SUCCESS = getActionType(GET_ME_API, SUCCESS);
+export const GET_ME_API_FAILURE = getActionType(GET_ME_API, FAILURE);
 
 /*
  * action creators
@@ -64,6 +69,26 @@ export function editUserStatusApiFailure(error = null) {
   };
 }
 
+export function getMeApi() {
+  return {
+    type: GET_ME_API_REQUEST,
+  };
+}
+
+export function getMeApiSuccess(currentUser) {
+  return {
+    type: GET_ME_API_SUCCESS,
+    payload: { currentUser }
+  };
+}
+
+export function getMeApiFailure(error = null) {
+  return {
+    type: GET_ME_API_FAILURE,
+    payload: { error }
+  };
+}
+
 export default {
   listUsersApi,
   listUsersApiSuccess,
@@ -73,11 +98,19 @@ export default {
   editUserStatusApiSuccess,
   editUserStatusApiFailure,
 
+  getMeApi,
+  getMeApiSuccess,
+  getMeApiFailure,
+
   LIST_USERS_API_REQUEST,
   LIST_USERS_API_SUCCESS,
   LIST_USERS_API_FAILURE,
 
   EDIT_USER_STATUS_API_REQUEST,
   EDIT_USER_STATUS_API_SUCCESS,
-  EDIT_USER_STATUS_API_FAILURE
+  EDIT_USER_STATUS_API_FAILURE,
+
+  GET_ME_API_REQUEST,
+  GET_ME_API_SUCCESS,
+  GET_ME_API_FAILURE,
 };

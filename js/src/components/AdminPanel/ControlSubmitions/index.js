@@ -5,13 +5,14 @@ import styles from './style';
 import images from '../../../../assets/images';
 import SubmittionCard from './SubmittionCard';
 import GeneralButton from '../../Buttons/GeneralButton';
-
+import { FRIENDLY, CAREFUL, UNIQUE } from '../../../constants/views/buttonTypes';
+import { SMALL } from '../../../constants/views/buttonSizes';
 
 class ControlSubmitions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      comment: null,
+      comments: {},
       error: null,
       loading: false,
       refreshing: false,
@@ -29,7 +30,7 @@ class ControlSubmitions extends Component {
   }
 
   onRefresh() {
-    this.setState({ refreshing: true });
+    this.setState({ refreshing: true, comments: {} });
 
     this.props.fetchSubmittions()
       .then(() => {
@@ -85,7 +86,7 @@ class ControlSubmitions extends Component {
             <SubmittionCard
               submittion={item}
               actions={this.renderNewActions(item.id)}
-              onChangeComment={comment => this.setState({ comment })}
+              onChangeComment={comment => this.setComment(comment, item.id)}
             />
           }
           keyExtractor={item => item.id.toString()}
@@ -155,93 +156,81 @@ class ControlSubmitions extends Component {
   }
 
   renderNewActions = (id) => {
-    const { comment } = this.state;
     let buttons = [];
-    buttons.push(
-      <GeneralButton
-        size='small'
-        type='friendly'
-        title='Approve'
-        onPress={() => this.props.approveSubmittion(id, comment)}
-      />
-    );
-    buttons.push(
-      <GeneralButton
-        size='small'
-        type='careful'
-        title='Decline'
-        onPress={() => this.props.declineSubmittion(id, comment)}
-      />
-    );
-    buttons.push(
-      <GeneralButton
-        size='small'
-        type='careful'
-        title='Reject'
-        onPress={() => this.props.rejectSubmittion(id, comment)}
-      />
-    );
+    buttons.push(this.approveButton(id));
+    buttons.push(this.declineButton(id));
+    buttons.push(this.rejectButton(id));
     return buttons;
   }
 
-  renderApprovedActions = (id) => {
+  renderApprovedActions = () => {
     let buttons = [];
-    // buttons.push(
-    //   <GeneralButton
-    //     size='small'
-    //     type='careful'
-    //     title='Block'
-    //     onPress={() => this.props.blockUser(id)}
-    //   />
-    // );
     return buttons;
   }
 
   renderRejectedActions = (id) => {
-    const { comment } = this.state;
-
     let buttons = [];
-    buttons.push(
+    buttons.push(this.declineButton(id));
+    return buttons;
+  }
+
+  renderDeclinedActions = () => {
+    let buttons = [];
+    return buttons;
+  }
+
+  approveButton = id => {
+    const comment = this.getComment(id);
+    return (
       <GeneralButton
-        size='small'
-        type='friendly'
+        size={SMALL}
+        type={FRIENDLY}
         title='Approve'
         onPress={() => this.props.approveSubmittion(id, comment)}
       />
     );
-    buttons.push(
+  };
+
+  declineButton = id => {
+    const comment = this.getComment(id);
+    return (
       <GeneralButton
-        size='small'
-        type='careful'
+        size={SMALL}
+        type={UNIQUE}
         title='Decline'
         onPress={() => this.props.declineSubmittion(id, comment)}
       />
     );
-    return buttons;
-  }
+  };
 
-  renderDeclinedActions = (id) => {
-    const { comment } = this.state;
-
-    let buttons = [];
-    buttons.push(
+  rejectButton = id => {
+    const comment = this.getComment(id);
+    return (
       <GeneralButton
-        size='small'
-        type='friendly'
-        title='Approve'
-        onPress={() => this.props.approveSubmittion(id, comment)}
+        size={SMALL}
+        type={CAREFUL}
+        title='Reject'
+        onPress={() => this.props.rejectSubmittion(id, comment)}
       />
     );
-    buttons.push(
-      <GeneralButton
-        size='small'
-        type='careful'
-        title='Decline'
-        onPress={() => this.props.declineSubmittion(id, comment)}
-      />
-    );
-    return buttons;
-  }
+  };
+
+  getComment = id => {
+    const { comments } = this.state;
+
+    return comments[id];  //eslint-disable-line
+  };
+
+  setComment = (comment, id) => {
+    const { comments } = this.state;
+
+    this.setState({
+      comments: {
+        ...comments,
+        [id]: comment
+      }
+    });
+  };
 }
 
 ControlSubmitions.propTypes = {
