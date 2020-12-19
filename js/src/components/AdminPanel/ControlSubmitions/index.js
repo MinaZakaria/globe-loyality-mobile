@@ -6,6 +6,7 @@ import images from '../../../../assets/images';
 import SubmittionCard from './SubmittionCard';
 import GeneralButton from '../../Buttons/GeneralButton';
 import { FRIENDLY, CAREFUL, UNIQUE } from '../../../constants/views/buttonTypes';
+import { NEW, APPROVED, DECLINED, REJECTED } from '../../../constants/ChallengeSubmittionStatueses';
 import { SMALL } from '../../../constants/views/buttonSizes';
 
 class ControlSubmitions extends Component {
@@ -66,26 +67,26 @@ class ControlSubmitions extends Component {
             <RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh.bind(this)} />
           }
         >
-          {this.renderNew()}
-          {this.renderApproved()}
-          {this.renderRejected()}
-          {this.renderDeclined()}
+          {this.renderCollection(NEW)}
+          {this.renderCollection(APPROVED)}
+          {this.renderCollection(REJECTED)}
+          {this.renderCollection(DECLINED)}
         </ScrollView>
       </View>
     );
   }
 
-  renderNew = () => {
+  renderCollection = (submittionStatus) => {
     return (
       <View>
-        <Text style={styles.titleText}>New Challenges Submittions:</Text>
+        <Text style={styles.titleText}></Text>
         <FlatList
-          ListEmptyComponent={() => <Text style={styles.emptyText}>No New Submittions</Text>}
-          data={this.props.newSubmittions}
+          ListEmptyComponent={() => <Text style={styles.emptyText}>{this.getTitle(submittionStatus)}</Text>}
+          data={this.getData(submittionStatus)}
           renderItem={({ item }) =>
             <SubmittionCard
               submittion={item}
-              actions={this.renderNewActions(item.id)}
+              actions={this.getButtons(submittionStatus, item.id)}
               onChangeComment={comment => this.setComment(comment, item.id)}
             />
           }
@@ -95,64 +96,45 @@ class ControlSubmitions extends Component {
     );
   }
 
-  renderApproved = () => {
-    return (
-      <View>
-        <Text style={styles.titleText}>Approved Challenges Submittions:</Text>
-        <FlatList
-          ListEmptyComponent={() => <Text style={styles.emptyText}>No Approved Submittions</Text>}
-          data={this.props.approvedSubmittions}
-          renderItem={({ item }) =>
-            <SubmittionCard
-              submittion={item}
-              actions={this.renderApprovedActions(item.id)}
-              onChangeComment={comment => this.setState({ comment })}
-            />
-          }
-          keyExtractor={item => item.id.toString()}
-        />
-      </View>
-    );
+  getTitle = (submittionStatus) => {
+    switch (submittionStatus) {
+      case NEW:
+        return 'New Challenges Submittions:';
+      case APPROVED:
+        return 'Approved Challenges Submittions:';
+      case DECLINED:
+        return 'Declined Challenges Submittions:';
+      case REJECTED:
+        return 'Rejected Challenges Submittions:';
+    }
   }
 
-  renderRejected = () => {
-    return (
-      <View>
-        <Text style={styles.titleText}>Rejected Challenges Submittions:</Text>
-        <FlatList
-          ListEmptyComponent={() => <Text style={styles.emptyText}>No Rejected Submittions</Text>}
-          data={this.props.rejectedSubmittions}
-          renderItem={({ item }) =>
-            <SubmittionCard
-              submittion={item}
-              actions={this.renderRejectedActions(item.id)}
-              onChangeComment={comment => this.setState({ comment })}
-            />
-          }
-          keyExtractor={item => item.id.toString()}
-        />
-      </View>
-    );
+  getData = (submittionStatus) => {
+    const { newSubmittions, approvedSubmittions, rejectedSubmittions, declinedSubmittions } = this.props;
+
+    switch (submittionStatus) {
+      case NEW:
+        return newSubmittions;
+      case APPROVED:
+        return approvedSubmittions;
+      case DECLINED:
+        return rejectedSubmittions;
+      case REJECTED:
+        return declinedSubmittions;
+    }
   }
 
-  renderDeclined = () => {
-    return (
-      <View>
-        <Text style={styles.titleText}>Declined Challenges Submittions:</Text>
-        <FlatList
-          ListEmptyComponent={() => <Text style={styles.emptyText}>No Declined Submittions</Text>}
-          data={this.props.declinedSubmittions}
-          renderItem={({ item }) =>
-            <SubmittionCard
-              submittion={item}
-              actions={this.renderDeclinedActions(item.id)}
-              onChangeComment={comment => this.setState({ comment })}
-            />
-          }
-          keyExtractor={item => item.id.toString()}
-        />
-      </View>
-    );
+  getButtons = (submittionStatus, itemId) => {
+    switch (submittionStatus) {
+      case NEW:
+        return this.renderNewActions(itemId);
+      case APPROVED:
+        return this.renderApprovedActions(itemId);
+      case DECLINED:
+        return this.renderDeclinedActions(itemId);
+      case REJECTED:
+        return this.renderRejectedActions(itemId);
+    }
   }
 
   renderNewActions = (id) => {
