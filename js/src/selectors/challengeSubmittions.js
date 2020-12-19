@@ -1,4 +1,5 @@
 import ItemNotFoundException from '../utils/app/Exceptions/ItemNotFoundException';
+import { getCurrentUser } from './login';
 
 const local = state => state.challengeSubmittions;
 
@@ -23,4 +24,15 @@ export const getByStatus = (state, statusId) => {
   return getAll(state).filter(submittion => {
     return submittion.statusId == statusId;
   }).sort((o1, o2) => o2.challenge.programId - o1.challenge.programId);
+};
+
+export const getByUserId = (state, userId) => {
+  return getAll(state).filter(submittion => {
+    return submittion.user.id == userId;
+  }).sort((o1, o2) => o2.challenge.programId - o1.challenge.programId);
+};
+
+export const getForCurrentUser = (state) => {
+  const currentUser = getCurrentUser(state);
+  return getByUserId(state, currentUser.id);
 };

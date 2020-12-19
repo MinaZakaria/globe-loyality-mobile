@@ -32,4 +32,23 @@ export default StyleSheet.create({
     marginTop: 20,
     fontSize: 40
   },
+  challengesContainer: {
+    paddingTop: spacings.xl
+    // justifyContent: 'center',
+    // alignItems: 'center',
+  },
+  titleText: {
+    margin: 20,
+    ...fonts.title,
+    alignSelf: 'center'
+  },
+  emptyContainer: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  emptyText: {
+    ...fonts.midTitle,
+    paddingVertical: spacings.xs,
+    paddingHorizontal: spacings.xl
+  }
 });

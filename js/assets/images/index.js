@@ -9,7 +9,9 @@ export default {
     back2: require('./arrows/back2.png')
   },
   adminPanel: require('./adminPanel/adminPanel.png'),
+  pending: require('./pending/pending.png'),
   approve: require('./approve/approve.png'),
+  reject: require('./reject/reject.png'),
   settings: require('./settings/settings.png'),
   challenges: {
     icon: require('./challenges/icon.png'),
@@ -40,4 +42,5 @@ export default {
   folder: require('./folder/folder.png'),
   uploadDefault: require('./uploadDefault/uploadDefault.png'),
   testSubmittion: require('./testSubmittion/testSubmittion.png'),
+  home: require('./home/home.png'),
 };

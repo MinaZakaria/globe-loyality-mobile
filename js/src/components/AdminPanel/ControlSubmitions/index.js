@@ -79,9 +79,9 @@ class ControlSubmitions extends Component {
   renderCollection = (submittionStatus) => {
     return (
       <View>
-        <Text style={styles.titleText}></Text>
+        <Text style={styles.titleText}>{this.getTitle(submittionStatus)}</Text>
         <FlatList
-          ListEmptyComponent={() => <Text style={styles.emptyText}>{this.getTitle(submittionStatus)}</Text>}
+          ListEmptyComponent={() => <Text style={styles.emptyText}>{this.getEmptyTitle(submittionStatus)}</Text>}
           data={this.getData(submittionStatus)}
           renderItem={({ item }) =>
             <SubmittionCard
@@ -106,6 +106,19 @@ class ControlSubmitions extends Component {
         return 'Declined Challenges Submittions:';
       case REJECTED:
         return 'Rejected Challenges Submittions:';
+    }
+  }
+
+  getEmptyTitle = (submittionStatus) => {
+    switch (submittionStatus) {
+      case NEW:
+        return 'No new submitting on challenges';
+      case APPROVED:
+        return 'No submitting on challenges approved yet';
+      case DECLINED:
+        return 'No submitting on challenges declined yet';
+      case REJECTED:
+        return 'No submitting on challenges rejected yet';
     }
   }
 

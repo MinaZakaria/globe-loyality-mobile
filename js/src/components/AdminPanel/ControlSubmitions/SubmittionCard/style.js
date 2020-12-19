@@ -27,7 +27,7 @@ export default StyleSheet.create({
   pointsText: {
     ...fonts.midTitle,
     alignSelf: 'center',
-    paddingBottom: spacings.xxs
+    padding: spacings.xxs
   },
   actionsContainer: {
     flexDirection: 'row',
@@ -41,6 +41,23 @@ export default StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 15,
     justifyContent: 'space-between'
+  },
+  pointsStatusContainer: {
+    flexDirection: 'row',
+    marginBottom: 15,
+    justifyContent: 'center'
+  },
+  newImage: {
+    tintColor: colors.warning,
+  },
+  approveImage: {
+    tintColor: colors.secondary,
+  },
+  rejectImage: {
+    tintColor: colors.error,
+  },
+  declineImage: {
+    tintColor: colors.primary,
   },
   challengeInfo: {
     flexDirection: 'column',

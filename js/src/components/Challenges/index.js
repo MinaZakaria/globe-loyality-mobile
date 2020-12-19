@@ -9,7 +9,7 @@ import ChallengeCard from './ChallengeCard';
 
 import ChallengeFormModal from './ChallengeFormModal';
 
-function Challenges({ t, navigation, challenges, fetchChallenges, onChallengePress, onCreateChallengePress, programs }) {
+function Challenges({ t, navigation, challenges, fetchChallenges, onCreateChallengePress, programs }) {
   useEffect(() => {
     const fetch = navigation.addListener('focus', () => {
       fetchChallenges();
@@ -22,7 +22,10 @@ function Challenges({ t, navigation, challenges, fetchChallenges, onChallengePre
     return <ChallengeCard challenge={item} onChallengePress={onPress} />;
   };
 
-  const onPress = id => onChallengePress(id);
+  const onPress = (challengeId, programId) => {
+    navigation.navigate('SubmitChallenge', { challengeId, programId });
+  };
+
   const onCreatePress = (challenge) => onCreateChallengePress(challenge);
 
   const challengesKeyExtractor = item => item.id.toString();
@@ -114,7 +117,6 @@ Challenges.propTypes = {
   navigation: PropTypes.object,
   fetchChallenges: PropTypes.func.isRequired,
   challenges: PropTypes.array,
-  onChallengePress: PropTypes.func,
   onCreateChallengePress: PropTypes.func,
   programs: PropTypes.array
 };

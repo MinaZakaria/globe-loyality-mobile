@@ -7,7 +7,7 @@ import images from '../../../../assets/images';
 function ChallengeCard({ challenge, onChallengePress }) {
 
   const onPress = () => {
-    onChallengePress(challenge.id);
+    onChallengePress(challenge.id, challenge.programId);
   };
 
   return (

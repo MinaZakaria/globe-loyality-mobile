@@ -3,6 +3,10 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './style';
 import images from '../../../assets/images';
+import {
+  GLOBE_CHAMPION, GLOBE_IDOL, ABKARINO, SELEM_ELMAGD,
+  EL_DA7EE7, TALENT_CATCHING, GLOBE_OLYMPICS
+} from '../../constants/Programs';
 
 class Programs extends Component {
 
@@ -17,7 +21,7 @@ class Programs extends Component {
         </TouchableOpacity>
         <Text style={styles.containerTitle}>Programs</Text>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Programs')}
+          onPress={() => navigation.navigate('Profile')}
         >
           <Image source={images.profile} />
         </TouchableOpacity>
@@ -31,30 +35,30 @@ class Programs extends Component {
         {this.renderHeader()}
         <View style={styles.programsContainer}>
           <View>
-            <TouchableOpacity onPress={() => this.onProgramPress(2)}>
+            <TouchableOpacity onPress={() => this.onProgramPress(GLOBE_CHAMPION)}>
               <Image source={images.programs.globeChampionLogo} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.onProgramPress(5)}>
+            <TouchableOpacity onPress={() => this.onProgramPress(EL_DA7EE7)}>
               <Image source={images.programs.elda7i7Logo} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.onProgramPress(1)}>
+            <TouchableOpacity onPress={() => this.onProgramPress(ABKARINO)}>
               <Image source={images.programs.abkarinoLogo} />
             </TouchableOpacity>
           </View>
           <View>
-            <TouchableOpacity onPress={() => this.onProgramPress(3)}>
+            <TouchableOpacity onPress={() => this.onProgramPress(GLOBE_IDOL)}>
               <Image source={images.programs.globeIdolLogo} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.onProgramPress(4)}>
+            <TouchableOpacity onPress={() => this.onProgramPress(SELEM_ELMAGD)}>
               <Image source={images.programs.selemElMagdLogo} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.onProgramPress(6)}>
+            <TouchableOpacity onPress={() => this.onProgramPress(TALENT_CATCHING)}>
               <Image source={images.programs.talentCatchingLogo} />
             </TouchableOpacity>
           </View>
         </View>
         <View style={styles.programsContainer}>
-          <TouchableOpacity onPress={() => this.onProgramPress(7)}>
+          <TouchableOpacity onPress={() => this.onProgramPress(GLOBE_OLYMPICS)}>
             <Image source={images.programs.globeOlympicsLogo} />
           </TouchableOpacity>
         </View>

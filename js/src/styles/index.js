@@ -22,6 +22,7 @@ export const colors = {
   blueShadow: '#1B254D',
   selected: '#000000',
   deselected: '#9b9999',
+  warning: '#faac11',
 };
 
 export const spacings = {
